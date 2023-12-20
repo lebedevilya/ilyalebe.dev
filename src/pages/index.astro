@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import HorizontalCard from "../components/HorizontalCard.astro";
 import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
 
 const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
@@ -18,15 +19,28 @@ const last_posts = posts.slice(0, 3);
         I love to build products with real impact to the world. My main speciality is Ruby on Rails backend development and I'm constantly seeking opportunities to expand my knowledge and stay at the forefront of tech landscape.
       </text>
     </div>
-    <hr>
+    <div class="divider my-0"></div>
     <div class="py-2">
       <p class="text-lg">
         Beyond coding, I have a few other passions that keep me inspired. I enjoy traveling, and so far, I've had the pleasure of exploring 11 different countries (with many more on my list). When I'm not immersed in coding, you can find me playing ping-pong, flying FPV drone, or diving.
       </p>
     </div>
+
+  <div class="pt-2">
+    <div class="divider my-0"></div>
+    <div class="pt-2">
+      <a href="https://www.instagram.com/ilyalebe.dev/">
+        <p class="text-lg">
+        Subscribe to my Instagram and check out my travels
+        <a class="bg-gradient-to-tr from-yellow-400 to-fuchsia-600 text-transparent bg-clip-text" href="https://www.instagram.com/ilyalebe.dev/">
+          @ilyalebe.dev
+        </a>
+        </p>
+      </a>
+    </div>
   </div>
 
-  <div class="mt-10 sm:mt-12 mb-20">
+  <div class="mt-10 mb-20">
     <div class="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
       <div class="relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl sm:w-72 sm:rounded-2xl rotate-2">
         <img src="/pic1.jpeg" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover" style="color:transparent" sizes="(min-width: 640px) 18rem, 11rem">
