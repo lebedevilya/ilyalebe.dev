@@ -1,15 +1,42 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import TimeLineElement from "../components/cv/TimeLine.astro";
+const currentAge = Math.floor((new Date() - new Date('1996-08-05')) / 31557600000);
 ---
 
 <BaseLayout title="Resume" sideBarActiveItemID="cv">
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Personal info</div>
+  </div>
+
+  <div class="mb-10 text-justify">
+    <b>Name:</b> Ilya Lebedev
+    <br>
+    <b>Birthdate:</b> 05.08.1996
+    <br>
+    <b>Age:</b>&nbsp;{currentAge}
+    <br>
+    <b>Citizenship:</b> Russia
+    <br>
+    <b>Location:</b> Not fixed (digital nomad)
+  </div>
+
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Contact info</div>
+  </div>
+
+  <div class="mb-10 text-justify">
+    <b>Email:</b> ilya0lebedev@gmail.com
+    <br>
+    <b>Telegram:</b> @rubyminer
+  </div>
+
   <div class="mb-5">
     <div class="text-3xl w-full font-bold">Profile</div>
   </div>
 
   <div class="mb-10 text-justify">
-    I have been involved in Ruby application development since 2017 as a hobby, and it has been my primary activity since 2019. While my focus is primarily on backend development, I also have knowledge in frontend technologies and I'm open to working on frontend tasks as well. I have a passion for exploring new technologies and programming languages. I enjoy creating applications that have a real-world impact and help people. I have a good discipline and i like to work remotely and asynchronously. I have a professional level of English and have worked with clients from various countries, including Europe, the US, and others.
+    I have been involved in Ruby application development since 2017 as a hobby, and it has been my primary activity since 2019. While my focus is primarily on backend development, I also have knowledge in frontend technologies and I'm open to working on frontend tasks as well. I have a passion for exploring new technologies and programming languages. Interested in crypto and AI. I enjoy creating applications that have a real-world impact and help people. I have a good discipline and i like to work remotely and asynchronously. I have a professional level of English and have worked with clients from various countries, including Europe, the US, and others.
   </div>
 
   <div class="mb-5">
@@ -30,7 +57,6 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
   <div class="mb-5">
     <div class="text-3xl w-full font-bold">Experience</div>
   </div>
-
   <div class="time-line-container mb-5">
     <TimeLineElement
       title="Ruby Developer"
@@ -40,9 +66,11 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
       Designed and implemented the intercompany object system, serving as the foundation for cross-regional communication (handling shipping, invoices, deals, organizations, etc.) in collaboration with team.
       Architectural design and creation from scratch of HS codes and all associated components.
       Currently working in Customer account team (REST API, GraphQL and customer related logic)
+      <br>
+      <span class="font-light text-sm">Technologies used: Ruby on Rails, PostgreSQL, Sidekiq, GraphQL, Swagger, Rspec, RabbitMQ, Redis, Python, Airflow, Docker</span>
     </TimeLineElement>
     <TimeLineElement
-      title="Worked on my own start-up"
+      title="Worked on my own start-up & business"
       subtitle="Aug 2021 - Sep 2022"
     >
     </TimeLineElement>
@@ -51,20 +79,29 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
       subtitle="Sep 2020 - Aug 2021 at rubyroidlabs.com, remote"
     >
       Outsourcing various companies and clients, worked on multiple project including online stores, news feed hub, insurance start-up, e.t.c.
+      <br>
+      <span class="font-light text-sm">Technologies used: Ruby on Rails, PostgreSQL, Sidekiq, ReactJS, Grape, Docker, Docker Swarm, Stripe, AWS</span>
     </TimeLineElement>
     <TimeLineElement
       title="Ruby Developer"
       subtitle="Apr 2020 - Sep 2020 at igooods.ru, Saint-Petersburg, Russia"
     >
-      Worked as backend developer in Retail team. Participated in integration of Auchan retail network, created dozens of various xml, xls, email reports. All kinds of various parsers, bulk uploads, big data import, e.t.c.
+      Backend developer at retail office:
+      Integration of Auchan shops, parsing various data from API, reports automatization. Worked with huge amounts of barcodes, photo uploads, e.t.c.
+      Various admin side improvements for internal application.
+      <br>
+      <span class="font-light text-sm">Technologies used: Ruby on Rails, PostgreSQL, Resque, Rspec</span>
     </TimeLineElement>
     <TimeLineElement
       title="Ruby Developer"
       subtitle="Jul 2019 - Apr 2020 at sputnik8.com, Saint-Petersburg, Russia"
     >
-      Ruby on Rails backend developer
+      Worked as backend developer, multiple API integrations with various websites. API integration of payment systems like Yandex and Cloudpayments. Translated big part of application to English language. Worked with multiple parsers and reports, different improvements of admin and client parts of application (user reviews, discount codes, e.t.c.)
+      <br>
+      <span class="font-light text-sm">Technologies used: Ruby on Rails, PostgreSQL, Sidekiq, VueJS, Heroku, Rspec</span>
     </TimeLineElement>
   </div>
+
   <div class="mb-5">
     <div class="text-xl w-full">Internships during education</div>
   </div>
@@ -73,26 +110,55 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
       title="Web Development Intern"
       subtitle="Nov 2018 - May 2019 at Yandex, Saint-Petersburg, Russia"
     >
-      Worked on internal service intented for frontend developers. Python, ReactJS, GraphQL
+      Worked on internal service intented for frontend developers. 
+      <br>
+      <span class="font-light text-sm">Technologies used: Python, ReactJS, GraphQL</span>
     </TimeLineElement>
     <TimeLineElement
       title="C++/CUDA Developer intern"
       subtitle="Jul 2018 - Aug 2018 at Joint Institute of Nuclear Research, Dubna, Russia"
     >
       Participated in summer student program. My project is "GNA framework: Implementation of GPU-based transformations"
+      <br>
+      <span class="font-light text-sm">Technologies used: C++, CUDA</span>
     </TimeLineElement>
     <TimeLineElement
       title="Quantitative research consultant"
       subtitle="Apr 2017 - Jul 2017 at WoldQuant LLC, Saint-Petersburg, Russia"
     >
       Building quantitative models aimed at predicting price movements of various asset classes.
+      <br>
+      <span class="font-light text-sm">Technologies used: Python</span>
+    </TimeLineElement>
+  </div>
+
+  <div class="mb-5">
+    <div class="text-xl w-full">Personal projects</div>
+  </div>
+  <div class="time-line-container mb-10">
+    <TimeLineElement
+      title="customs.codes"
+      subtitle="currently operating"
+    >
+      AI powered tool which helps you find customs codes for any type of goods. Built with Ruby on Rails.
+    </TimeLineElement>
+    <TimeLineElement
+      title="souper.cafe"
+      subtitle="currently operating"
+    >
+      Restaurant website/management system. Built with Ruby on Rails.
+    </TimeLineElement>
+    <TimeLineElement
+      title="Jogurt OS"
+      subtitle="currently closed"
+    >
+      Operating system for HDD based crypto mining (Chia). Based on Debian. Client side implemented on Java, server side built with Ruby on Rails.
     </TimeLineElement>
   </div>
 
   <div class="mb-5">
     <div class="text-3xl w-full font-bold">Certifications</div>
   </div>
-
   <ul class="list-disc mx-6 mb-10 grid gap-2">
     <li>
       <a href="https://www.efset.org/cert/49rskH" target="_blank">EFSET English Certificate 87/100 (C2 Proficient)</a>
@@ -147,14 +213,4 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
     <li>Heroku</li>
     <li>Airflow</li>
   </ul>
-
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Contact information</div>
-  </div>
-
-  <div class="mb-10 text-justify">
-    <b>Email:</b> ilya0lebedev@gmail.com
-    <br>
-    <b>Telegram:</b> @rubyminer
-  </div>
 </BaseLayout>
