@@ -1,34 +1,74 @@
 ---
-const { title, img, desc, url, badge, badgeClass = "badge-secondary", tags, target, role = "_blank" } = Astro.props;
+const { title, img, desc, url, badge, badgeClass = "badge-secondary", tags, target = "_blank", role } = Astro.props;
 import { Image } from "astro:assets";
 const tag_url = url.split("/").slice(0, -1).join("/") + "/tag";
+const isDiscontinued = badge === "DISCONTINUED";
 ---
 
 <div
-  class="rounded-lg bg-base-100 hover:shadow-xl transition ease-in-out hover:scale-[102%]"
+  class={`rounded-lg bg-base-100 transition ease-in-out ${isDiscontinued ? "opacity-70" : "hover:shadow-xl hover:scale-[102%]"}`}
 >
-  <a href={url} target={target}>
-    <div class="hero-content flex-col md:flex-row">
-      {
-        img && (
-          <Image
-            src={img}
-            width={750}
-            height={422}
-            format="webp"
-            alt={title}
-            class="max-w-full md:max-w-[13rem] rounded-lg"
-          />
-        )
-      }
-      <div class="grow w-full">
-        <h1 class="text-xl font-bold">
-          {title}
-          {badge && <div class={`badge ${badgeClass} mx-2`}>{badge}</div>}
-        </h1>
-        <p class="py-1 text-1xl">{desc}</p>
-        <p class="py-1">{role}</p>
-        <div class="card-actions justify-end">
+  {
+    isDiscontinued ? (
+      <div class="hero-content flex-col md:flex-row">
+        {
+          img && (
+            <Image
+              src={img}
+              width={750}
+              height={422}
+              format="webp"
+              alt={title}
+              class="max-w-full md:max-w-[13rem] rounded-lg"
+            />
+          )
+        }
+        <div class="grow w-full">
+          <h1 class="text-xl font-bold">
+            {title}
+            {badge && <div class={`badge ${badgeClass} mx-2`}>{badge}</div>}
+          </h1>
+          <p class="py-1 text-1xl">{desc}</p>
+          {role && <p class="py-1">{role}</p>}
+          <div class="card-actions justify-end">
+            {
+              tags &&
+                tags.map((tag) => (
+                  <a href={`${tag_url}/${tag}`} class="badge badge-outline">
+                    {tag}
+                  </a>
+                ))
+            }
+          </div>
+        </div>
+      </div>
+    ) : (
+      <>
+        <a href={url} target={target} rel="noopener noreferrer">
+          <div class="hero-content flex-col md:flex-row">
+            {
+              img && (
+                <Image
+                  src={img}
+                  width={750}
+                  height={422}
+                  format="webp"
+                  alt={title}
+                  class="max-w-full md:max-w-[13rem] rounded-lg"
+                />
+              )
+            }
+            <div class="grow w-full">
+              <h1 class="text-xl font-bold">
+                {title}
+                {badge && <div class={`badge ${badgeClass} mx-2`}>{badge}</div>}
+              </h1>
+              <p class="py-1 text-1xl">{desc}</p>
+              {role && <p class="py-1">{role}</p>}
+            </div>
+          </div>
+        </a>
+        <div class="card-actions justify-end px-4 pb-4 md:px-0 md:pb-0">
           {
             tags &&
               tags.map((tag) => (
@@ -38,7 +78,7 @@ const tag_url = url.split("/").slice(0, -1).join("/") + "/tag";
               ))
           }
         </div>
-      </div>
-    </div>
-  </a>
+      </>
+    )
+  }
 </div>
