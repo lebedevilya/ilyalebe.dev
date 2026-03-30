@@ -44,6 +44,100 @@ export interface CVData {
   skills: CVSkillEntry[];
 }
 
+const technicalFounderExperience: CVTimelineEntry = {
+  title: "Technical Founder",
+  subtitle: "Mar 2025 – Jan 2026 — nodes.garden (remote)",
+  bullets: [
+    "Founded and led the technical development of Web3/AI platform built with Ruby on Rails / PostgreSQL.",
+    "Built APIs and internal tooling used for managing large-scale infrastructure. 25,000+ nodes deployed in a year.",
+    "Scaled platform from 0 to 17,000+ users and six-figure revenue.",
+    "Owned backend architecture, core domain modeling, background processing.",
+    "Worked with browser automation, scraping, CAPTCHA bypassing and anti-detection techniques",
+    "Assembled and managed a distributed team of 10 people including engineers, customer support, BD.",
+    "Completed Techstars Web3 2025, XFounders Season 4 and Founder.University Cohort 9 programs.",
+  ],
+  tech: "Ruby on Rails, PostgreSQL, RSpec, GoodJob, Hotwire, TailwindCSS, Docker, fly.io",
+};
+
+const reinventedHospitalityExperience: CVTimelineEntry = {
+  title: "Fullstack Ruby Engineer",
+  subtitle: "Sep 2024 – Mar 2025 — reinvented-hospitality.com (remote)",
+  bullets: [
+    "Built and launched a full-cycle POS system (Rails + Hotwire) in under 3 months.",
+    "Designed and delivered core domain features for restaurant and hotel operations.",
+    "Delivered tax reports, data exports and operational tooling.",
+  ],
+  tech: "Ruby on Rails, PostgreSQL, Sidekiq, Hotwire, MiniTest, TailwindCSS, ViewComponent, AWS, Docker",
+};
+
+const xometryExperience: CVTimelineEntry = {
+  title: "Backend Ruby Engineer",
+  subtitle: "Oct 2022 – Sep 2024 — xometry.de (remote)",
+  bullets: [
+    "Worked on a large-scale manufacturing marketplace connecting hundreds of thousands of buyers & suppliers globally.",
+    "Implemented & launched UK and TR regional apps under tight deadlines (1 month).",
+    "Designed and implemented async intercompany communication systems with background processing and data consistency.",
+    "Fully owned & managed Salesforce integrations/pipelines.",
+    "Built foundational domain systems (HS codes, manufacturing attributes, pricing logic).",
+    "Architected and executed migration of the multi-repo architecture into a unified platform.",
+    "Built AI-powered HS codes search tool which cut down code search time for logistics team by 90%+",
+  ],
+  tech: "Ruby on Rails, ReactJS, RSpec, PostgreSQL, Sidekiq, GraphQL, RabbitMQ, Redis, Python, Airflow",
+};
+
+const earlierExperience: CVTimelineEntry = {
+  title: "Backend Ruby Engineer",
+  subtitle: "2019 – 2021 at sputnik8.com, igooods.ru, rubyroidlabs.com (remote)",
+  body: "Backend development across e-commerce, travel, insurance, and internal tooling products. Both in-house and outsourcing projects from EU/US.",
+  tech: "Ruby on Rails, ReactJS, VueJS, RSpec, PostgreSQL, Sidekiq, GraphQL, REST APIs, Heroku, AWS",
+};
+
+const earlyCareerExperience: CVTimelineEntry = {
+  title: "Internships & Early Career",
+  subtitle: "2017 – 2019",
+  bullets: [
+    "Yandex: Web Developer Intern. Python, ReactJS, GraphQL.",
+    "Joint Institute for Nuclear Research: C++/CUDA Developer Intern.",
+    "WorldQuant: Quantitative Research Consultant.",
+  ],
+};
+
+const xFoundersEducation: CVTimelineEntry = {
+  title: "XFounders Season 4",
+  subtitle: "2025 — x-founders.com",
+  body: "1 month on-site program involving dozens of startups and mentors, organized with Starknet Foundation",
+};
+
+const techstarsEducation: CVTimelineEntry = {
+  title: "Techstars Web3 '25",
+  subtitle: "2025 — techstars.com",
+  body: "Participated in a 3-month startup accelerator program with onsite events in Dublin, London and New York",
+};
+
+const master'sEducation: CVTimelineEntry = {
+  title: "Master's Degree in Applied Mathematics and Computer Science",
+  subtitle: "2017–2019 — Saint Petersburg State University",
+};
+
+const bachelor'sEducation: CVTimelineEntry = {
+  title: "Bachelor's Degree in Applied Mathematics and Computer Science",
+  subtitle: "2013–2017 — Saint Petersburg State University",
+};
+
+const nodesGardenProject: CVProjectEntry = {
+  title: "nodes.garden",
+  body: "Web3/AI NaaS platform built with Ruby on Rails. Finalist of Backdrop Build V4–V6:",
+  href: "https://backdropbuild.com/builds/nodesgarden",
+  linkLabel: "backdropbuild.com/builds/nodesgarden",
+};
+
+const customsCodesProject: CVProjectEntry = {
+  title: "customs.codes",
+  body: "RAG customs codes AI classification tool built with Ruby on Rails. Finalist of Backdrop Build V3:",
+  href: "https://backdropbuild.com/builds/v3/customscodes",
+  linkLabel: "backdropbuild.com/builds/v3/customscodes",
+};
+
 const general: CVData = {
   slug: "general",
   title: "Resume",
@@ -67,94 +161,19 @@ const general: CVData = {
   profile:
     "Senior backend/product engineer with 8+ years of experience building and operating high-load distributed systems. Ex-founder (Techstars ‘25), built and scaled infrastructure-heavy platform to 17,000+ users and 25,000+ deployed nodes, handling large-scale orchestration, background processing and integrations. Strong focus on system design, PostgreSQL performance and production reliability. Experienced in taking ownership of complex systems end-to-end, from architecture to deployment and scaling.",
   experience: [
-    {
-      title: "Technical Founder",
-      subtitle: "Mar 2025 – Jan 2026 — nodes.garden (remote)",
-      bullets: [
-        "Founded and led the technical development of Web3/AI platform built with Ruby on Rails / PostgreSQL.",
-        "Built APIs and internal tooling used for managing large-scale infrastructure. 25,000+ nodes deployed in a year.",
-        "Scaled platform from 0 to 17,000+ users and six-figure revenue.",
-        "Owned backend architecture, core domain modeling, background processing.",
-        "Worked with browser automation, scraping, CAPTCHA bypassing and anti-detection techniques",
-        "Assembled and managed a distributed team of 10 people including engineers, customer support, BD.",
-        "Completed Techstars Web3 2025, XFounders Season 4 and Founder.University Cohort 9 programs.",
-      ],
-      tech: "Ruby on Rails, PostgreSQL, RSpec, GoodJob, Hotwire, TailwindCSS, Docker, fly.io",
-    },
-    {
-      title: "Fullstack Ruby Engineer",
-      subtitle: "Sep 2024 – Mar 2025 — reinvented-hospitality.com (remote)",
-      bullets: [
-        "Built and launched a full-cycle POS system (Rails + Hotwire) in under 3 months.",
-        "Designed and delivered core domain features for restaurant and hotel operations.",
-        "Delivered tax reports, data exports and operational tooling.",
-      ],
-      tech: "Ruby on Rails, PostgreSQL, Sidekiq, Hotwire, MiniTest, TailwindCSS, ViewComponent, AWS, Docker",
-    },
-    {
-      title: "Backend Ruby Engineer",
-      subtitle: "Oct 2022 – Sep 2024 — xometry.de (remote)",
-      bullets: [
-        "Worked on a large-scale manufacturing marketplace connecting hundreds of thousands of buyers & suppliers globally.",
-        "Implemented & launched UK and TR regional apps under tight deadlines (1 month).",
-        "Designed and implemented async intercompany communication systems with background processing and data consistency.",
-        "Fully owned & managed Salesforce integrations/pipelines.",
-        "Built foundational domain systems (HS codes, manufacturing attributes, pricing logic).",
-        "Architected and executed migration of the multi-repo architecture into a unified platform.",
-        "Built AI-powered HS codes search tool which cut down code search time for logistics team by 90%+",
-      ],
-      tech: "Ruby on Rails, ReactJS, RSpec, PostgreSQL, Sidekiq, GraphQL, RabbitMQ, Redis, Python, Airflow",
-    },
-    {
-      title: "Backend Ruby Engineer",
-      subtitle: "2019 – 2021 at sputnik8.com, igooods.ru, rubyroidlabs.com (remote)",
-      body: "Backend development across e-commerce, travel, insurance, and internal tooling products. Both in-house and outsourcing projects from EU/US.",
-      tech: "Ruby on Rails, ReactJS, VueJS, RSpec, PostgreSQL, Sidekiq, GraphQL, REST APIs, Heroku, AWS",
-    },
-    {
-      title: "Internships & Early Career",
-      subtitle: "2017 – 2019",
-      bullets: [
-        "Yandex: Web Developer Intern. Python, ReactJS, GraphQL.",
-        "Joint Institute for Nuclear Research: C++/CUDA Developer Intern.",
-        "WorldQuant: Quantitative Research Consultant.",
-      ],
-    },
+    technicalFounderExperience,
+    reinventedHospitalityExperience,
+    xometryExperience,
+    earlierExperience,
+    earlyCareerExperience,
   ],
   education: [
-    {
-      title: "XFounders Season 4",
-      subtitle: "2025 — x-founders.com",
-      body: "1 month on-site program involving dozens of startups and mentors, organized with Starknet Foundation",
-    },
-    {
-      title: "Techstars Web3 '25",
-      subtitle: "2025 — techstars.com",
-      body: "Participated in a 3-month startup accelerator program with onsite events in Dublin, London and New York",
-    },
-    {
-      title: "Master's Degree in Applied Mathematics and Computer Science",
-      subtitle: "2017–2019 — Saint Petersburg State University",
-    },
-    {
-      title: "Bachelor's Degree in Applied Mathematics and Computer Science",
-      subtitle: "2013–2017 — Saint Petersburg State University",
-    },
+    xFoundersEducation,
+    techstarsEducation,
+    master'sEducation,
+    bachelor'sEducation,
   ],
-  projects: [
-    {
-      title: "nodes.garden",
-      body: "Web3/AI NaaS platform built with Ruby on Rails. Finalist of Backdrop Build V4–V6:",
-      href: "https://backdropbuild.com/builds/nodesgarden",
-      linkLabel: "backdropbuild.com/builds/nodesgarden",
-    },
-    {
-      title: "customs.codes",
-      body: "RAG customs codes AI classification tool built with Ruby on Rails. Finalist of Backdrop Build V3:",
-      href: "https://backdropbuild.com/builds/v3/customscodes",
-      linkLabel: "backdropbuild.com/builds/v3/customscodes",
-    },
-  ],
+  projects: [nodesGardenProject, customsCodesProject],
   skills: [
     { label: "Languages", value: "Ruby, Javascript, Python" },
     { label: "Backend", value: "Ruby on Rails, REST/GraphQL APIs, distributed systems, domain modeling" },
@@ -176,7 +195,7 @@ const backend: CVData = {
     "Backend-focused Ruby engineer with 8+ years of experience building distributed systems, PostgreSQL-backed products, and production-critical infrastructure. Strong on system design, async processing, data consistency, and operational reliability. Comfortable owning the backend from architecture through deployment and scaling.",
   experience: [
     {
-      ...general.experience[0],
+      ...technicalFounderExperience,
       bullets: [
         "Founded and led the technical development of a Web3/AI platform built with Ruby on Rails and PostgreSQL.",
         "Built APIs and internal tooling for large-scale infrastructure operations. 25,000+ nodes deployed in a year.",
@@ -188,7 +207,7 @@ const backend: CVData = {
       ],
     },
     {
-      ...general.experience[1],
+      ...reinventedHospitalityExperience,
       bullets: [
         "Built and launched a Rails + Hotwire POS system in under 3 months.",
         "Designed and delivered backend domain features for restaurant and hotel operations.",
@@ -196,7 +215,7 @@ const backend: CVData = {
       ],
     },
     {
-      ...general.experience[2],
+      ...xometryExperience,
       bullets: [
         "Worked on a large-scale manufacturing marketplace connecting hundreds of thousands of buyers and suppliers globally.",
         "Implemented and launched UK and TR regional apps under tight deadlines (1 month).",
@@ -208,10 +227,10 @@ const backend: CVData = {
       ],
     },
     {
-      ...general.experience[3],
+      ...earlierExperience,
       body: "Backend development across e-commerce, travel, insurance, and internal tooling products. Focused on Rails services, data flows, and integrations for EU/US clients.",
     },
-    general.experience[4],
+    earlyCareerExperience,
   ],
   projects: [
     {
@@ -248,7 +267,7 @@ const fullstack: CVData = {
     "Fullstack Ruby engineer with 8+ years shipping products end to end across backend systems, UIs, and operational tooling. Strong at turning product requirements into working Rails apps, with a practical bias toward delivery, maintainability, and production reliability.",
   experience: [
     {
-      ...general.experience[0],
+      ...technicalFounderExperience,
       bullets: [
         "Founded and led the technical development of a Web3/AI platform built with Ruby on Rails / PostgreSQL.",
         "Built APIs, internal tooling, and customer-facing workflows for large-scale infrastructure operations. 25,000+ nodes deployed in a year.",
@@ -260,7 +279,7 @@ const fullstack: CVData = {
       ],
     },
     {
-      ...general.experience[1],
+      ...reinventedHospitalityExperience,
       bullets: [
         "Built and launched a full-cycle POS system with Rails + Hotwire in under 3 months.",
         "Designed and delivered core product features for restaurant and hotel operations.",
@@ -268,7 +287,7 @@ const fullstack: CVData = {
       ],
     },
     {
-      ...general.experience[2],
+      ...xometryExperience,
       bullets: [
         "Worked on a large-scale manufacturing marketplace connecting hundreds of thousands of buyers and suppliers globally.",
         "Implemented and launched UK and TR regional apps under tight deadlines (1 month).",
@@ -280,10 +299,10 @@ const fullstack: CVData = {
       ],
     },
     {
-      ...general.experience[3],
+      ...earlierExperience,
       body: "Product and backend development across e-commerce, travel, insurance, and internal tooling products. Delivered both frontend and backend work for EU/US clients.",
     },
-    general.experience[4],
+    earlyCareerExperience,
   ],
   projects: [
     {
@@ -318,8 +337,16 @@ export const cvVariants = {
   fullstack,
 } satisfies Record<CVVariantSlug, CVData>;
 
-export function getCVVariant(slug: CVVariantSlug): CVData {
-  return cvVariants[slug];
+export function getCVVariant(slug: string): CVData | undefined {
+  if (!Object.prototype.hasOwnProperty.call(cvVariants, slug)) {
+    return undefined;
+  }
+
+  return cvVariants[slug as CVVariantSlug];
+}
+
+export function isCVVariantSlug(slug: string): slug is CVVariantSlug {
+  return Object.prototype.hasOwnProperty.call(cvVariants, slug);
 }
 
 export function getCVVariantSlugs(): CVVariantSlug[] {
