@@ -1,19 +1,22 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import TimeLineElement from "../components/cv/TimeLine.astro";
+import { getCVVariant } from "../data/cv";
+
+const cv = getCVVariant("general");
 ---
 
-<BaseLayout title="Resume" sideBarActiveItemID="cv">
+<BaseLayout title={cv.title} sideBarActiveItemID="cv">
 
   <!-- PERSONAL INFO -->
   <div class="mb-5">
-    <div class="text-3xl font-bold">Senior Backend Engineer (Ruby on Rails)</div>
+    <div class="text-3xl font-bold">{cv.headline}</div>
   </div>
 
   <div class="mb-10">
-    <b>Name:</b> Ilya Lebedev<br>
-    <b>Location:</b> Remote (US/EU time zones), B2B contract<br>
-    <b>Languages:</b> Russian (Native), English (C2), Spanish (A1)
+    {cv.personalInfo.map((item) => (
+      <div><b>{item.label}:</b> {item.value}</div>
+    ))}
   </div>
 
   <!-- CONTACT -->
@@ -22,11 +25,12 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
   </div>
 
   <div class="mb-10">
-    <b>Website:</b>&nbsp;<a href="https://ilyalebe.dev">ilyalebe.dev</a><br>
-    <b>Email:</b> ilya0lebedev@gmail.com<br>
-    <b>LinkedIn:</b>&nbsp;<a href="https://www.linkedin.com/in/ilya-lebedev-554225102/">ilya-lebedev-554225102</a><br>
-    <b>Telegram:</b> @rubyminer<br>
-    <b>GitHub:</b>&nbsp;<a href="https://github.com/lebedevilya">lebedevilya</a>
+    {cv.contact.map((item) => (
+      <div>
+        <b>{item.label}:</b>&nbsp;
+        {item.href ? <a href={item.href}>{item.value}</a> : item.value}
+      </div>
+    ))}
   </div>
 
   <!-- PROFILE -->
@@ -35,9 +39,7 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
   </div>
 
   <div class="mb-10 text-justify">
-    Senior backend/product engineer with 8+ years of experience building and operating high-load distributed systems.
-    Ex-founder (Techstars ‘25), built and scaled infrastructure-heavy platform to 17,000+ users and 25,000+ deployed nodes, handling large-scale orchestration, background processing and integrations.
-    Strong focus on system design, PostgreSQL performance and production reliability. Experienced in taking ownership of complex systems end-to-end, from architecture to deployment and scaling.
+    {cv.profile}
   </div>
 
   <!-- EXPERIENCE -->
@@ -46,87 +48,23 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
   </div>
 
   <div class="time-line-container mb-5">
-    <!-- NODES.GARDEN -->
-    <TimeLineElement
-      title="Technical Founder"
-      subtitle="Mar 2025 – Jan 2026 — nodes.garden (remote)"
-    >
-      <ul class="list-disc mx-6 mb-2 grid gap-2">
-        <li>Founded and led the technical development of Web3/AI platform built with Ruby on Rails / PostgreSQL.</li>
-        <li>Built APIs and internal tooling used for managing large-scale infrastructure. 25,000+ nodes deployed in a year.</li>
-        <li>Scaled platform from 0 to 17,000+ users and six-figure revenue.</li>
-        <li>Owned backend architecture, core domain modeling, background processing.</li>
-        <li>Worked with browser automation, scraping, CAPTCHA bypassing and anti-detection techniques</li>
-        <li>Assembled and managed a distributed team of 10 people including engineers, customer support, BD.</li>
-        <li>Completed Techstars Web3 2025, XFounders Season 4 and Founder.University Cohort 9 programs.</li>
-      </ul>
-      <span class="text-sm font-light">
-        Tech: Ruby on Rails, PostgreSQL, RSpec, GoodJob, Hotwire, TailwindCSS, Docker, fly.io
-      </span>
-    </TimeLineElement>
+    {cv.experience.map((entry) => (
+      <TimeLineElement title={entry.title} subtitle={entry.subtitle}>
+        {entry.bullets ? (
+          <ul class="list-disc mx-6 mb-2 grid gap-2">
+            {entry.bullets.map((bullet) => <li>{bullet}</li>)}
+          </ul>
+        ) : entry.body ? (
+          <p class="max-w-3xl leading-relaxed">{entry.body}</p>
+        ) : null}
 
-    <!-- REINVENTED HOSPITALITY -->
-    <TimeLineElement
-      title="Fullstack Ruby Engineer"
-      subtitle="Sep 2024 – Mar 2025 — reinvented-hospitality.com (remote)"
-    >
-      <ul class="list-disc mx-6 mb-2 grid gap-2">
-        <li>Built and launched a full-cycle POS system (Rails + Hotwire) in under 3 months.</li>
-        <li>Designed and delivered core domain features for restaurant and hotel operations.</li>
-        <li>Delivered tax reports, data exports and operational tooling.</li>
-      </ul>
-      <span class="text-sm font-light">
-        Tech: Ruby on Rails, PostgreSQL, Sidekiq, Hotwire, MiniTest, TailwindCSS, ViewComponent, AWS, Docker
-      </span>
-    </TimeLineElement>
-
-    <!-- XOMETRY -->
-    <TimeLineElement
-      title="Backend Ruby Engineer"
-      subtitle="Oct 2022 – Sep 2024 — xometry.de (remote)"
-    >
-      <ul class="list-disc mx-6 mb-2 grid gap-2">
-        <li>Worked on a large-scale manufacturing marketplace connecting hundreds of thousands of buyers & suppliers globally.</li>
-        <li>Implemented & launched UK and TR regional apps under tight deadlines (1 month).</li>
-        <li>Designed and implemented async intercompany communication systems with background processing and data consistency.</li>
-        <li>Fully owned & managed Salesforce integrations/pipelines.</li>
-        <li>Built foundational domain systems (HS codes, manufacturing attributes, pricing logic).</li>
-        <li>Architected and executed migration of the multi-repo architecture into a unified platform.</li>
-        <li>Built AI-powered HS codes search tool which cut down code search time for logistics team by 90%+</li>
-      </ul>
-      <span class="text-sm font-light">
-        Tech: Ruby on Rails, ReactJS, RSpec, PostgreSQL, Sidekiq, GraphQL, RabbitMQ, Redis, Python, Airflow
-      </span>
-    </TimeLineElement>
-
-    <!-- EARLIER EXPERIENCE -->
-    <TimeLineElement
-      title="Backend Ruby Engineer"
-      subtitle="2019 – 2021 at sputnik8.com, igooods.ru, rubyroidlabs.com (remote)"
-    >
-      Backend development across e-commerce, travel, insurance, and internal tooling products. Both in-house and outsourcing projects from EU/US.
-      <br>
-      <span class="text-sm font-light">
-        Tech: Ruby on Rails, ReactJS, VueJS, RSpec, PostgreSQL, Sidekiq, GraphQL, REST APIs, Heroku, AWS
-      </span>
-    </TimeLineElement>
-
-    <TimeLineElement
-      title="Internships & Early Career"
-      subtitle="2017 – 2019"
-    >
-      <ul class="list-disc mx-6 mb-2 grid gap-2">
-        <li>
-          Yandex: Web Developer Intern. Python, ReactJS, GraphQL.
-        </li>
-        <li>
-          Joint Institute for Nuclear Research: C++/CUDA Developer Intern.
-        </li>
-        <li>
-          WorldQuant: Quantitative Research Consultant.
-        </li>
-      </ul>
-    </TimeLineElement>
+        {entry.tech && (
+          <span class="mt-2 block text-sm font-light">
+            Tech: {entry.tech}
+          </span>
+        )}
+      </TimeLineElement>
+    ))}
   </div>
 
   <!-- EDUCATION -->
@@ -135,30 +73,11 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
   </div>
 
   <div class="time-line-container grid gap-4 mb-10">
-    <TimeLineElement
-      title="XFounders Season 4"
-      subtitle="2025 — x-founders.com"
-    >
-      <p class="max-w-3xl leading-relaxed">
-        1 month on-site program involving dozens of startups and mentors, organized with Starknet Foundation
-      </p>
-    </TimeLineElement>
-    <TimeLineElement
-      title="Techstars Web3 '25"
-      subtitle="2025 — techstars.com"
-    >
-      <p class="max-w-3xl leading-relaxed">
-      Participated in a 3-month startup accelerator program with onsite events in Dublin, London and New York
-      </p>
-    </TimeLineElement>
-    <TimeLineElement
-      title="Master's Degree in Applied Mathematics and Computer Science"
-      subtitle="2017–2019 — Saint Petersburg State University"
-    />
-    <TimeLineElement
-      title="Bachelor's Degree in Applied Mathematics and Computer Science"
-      subtitle="2013–2017 — Saint Petersburg State University"
-    />
+    {cv.education.map((entry) => (
+      <TimeLineElement title={entry.title} subtitle={entry.subtitle}>
+        {entry.body ? <p class="max-w-3xl leading-relaxed">{entry.body}</p> : null}
+      </TimeLineElement>
+    ))}
   </div>
 
   <!-- PROJECTS -->
@@ -167,19 +86,19 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
   </div>
 
   <div class="time-line-container mb-10">
-    <TimeLineElement title="nodes.garden">
-      <p class="max-w-3xl leading-relaxed">
-        Web3/AI NaaS platform built with Ruby on Rails. Finalist of Backdrop Build V4–V6:&nbsp;
-        <a href="https://backdropbuild.com/builds/nodesgarden">backdropbuild.com/builds/nodesgarden</a>
-      </p>
-    </TimeLineElement>
-
-    <TimeLineElement title="customs.codes">
-      <p class="max-w-3xl leading-relaxed">
-        RAG customs codes AI classification tool built with Ruby on Rails. Finalist of Backdrop Build V3:&nbsp;
-        <a href="https://backdropbuild.com/builds/v3/customscodes">backdropbuild.com/builds/v3/customscodes</a>
-      </p>
-    </TimeLineElement>
+    {cv.projects.map((project) => (
+      <TimeLineElement title={project.title}>
+        <p class="max-w-3xl leading-relaxed">
+          {project.body}
+          {project.href && project.linkLabel ? (
+            <>
+              {" "}
+              <a href={project.href}>{project.linkLabel}</a>
+            </>
+          ) : null}
+        </p>
+      </TimeLineElement>
+    ))}
   </div>
 
   <!-- SKILLS -->
@@ -188,15 +107,9 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
   </div>
 
   <ul class="list-disc md:columns-3 columns-2 mx-6 mb-10">
-    <li><b>Languages:</b> Ruby, Javascript, Python</li>
-    <li><b>Backend:</b> Ruby on Rails, REST/GraphQL APIs, distributed systems, domain modeling</li>
-    <li><b>Databases:</b> PostgreSQL, Redis</li>
-    <li><b>Async:</b> Sidekiq, SolidQueue, RabbitMQ</li>
-    <li><b>Infra:</b> Docker, CI/CD, AWS, GCP, fly.io, Heroku, Kamal</li>
-    <li><b>Observability:</b> Datadog, Sentry, Appsignal</li>
-    <li><b>Frontend:</b> Hotwire, ReactJS</li>
-    <li><b>AI:</b> LLM integrations, RAG, vector DBs</li>
-    <li><b>Payments:</b> Stripe, PayPal, CloudPayments, Copperx & others</li>
+    {cv.skills.map((skill) => (
+      <li><b>{skill.label}:</b> {skill.value}</li>
+    ))}
   </ul>
 
 </BaseLayout>
