@@ -58,6 +58,7 @@ const { cv } = Astro.props;
       ) : entry.body ? (
         <>
           {entry.body}
+          {entry.tech ? <br /> : null}
         </>
       ) : null}
       {entry.tech ? (
