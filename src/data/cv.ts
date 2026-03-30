@@ -65,7 +65,7 @@ const general: CVData = {
     { label: "GitHub", value: "lebedevilya", href: "https://github.com/lebedevilya" },
   ],
   profile:
-    "Senior backend/product engineer with 8+ years of experience building and operating high-load distributed systems. Ex-founder (Techstars '25), built and scaled infrastructure-heavy platform to 17,000+ users and 25,000+ deployed nodes, handling large-scale orchestration, background processing and integrations. Strong focus on system design, PostgreSQL performance and production reliability. Experienced in taking ownership of complex systems end-to-end, from architecture to deployment and scaling.",
+    "Senior backend/product engineer with 8+ years of experience building and operating high-load distributed systems. Ex-founder (Techstars ‘25), built and scaled infrastructure-heavy platform to 17,000+ users and 25,000+ deployed nodes, handling large-scale orchestration, background processing and integrations. Strong focus on system design, PostgreSQL performance and production reliability. Experienced in taking ownership of complex systems end-to-end, from architecture to deployment and scaling.",
   experience: [
     {
       title: "Technical Founder",
@@ -75,7 +75,7 @@ const general: CVData = {
         "Built APIs and internal tooling used for managing large-scale infrastructure. 25,000+ nodes deployed in a year.",
         "Scaled platform from 0 to 17,000+ users and six-figure revenue.",
         "Owned backend architecture, core domain modeling, background processing.",
-        "Worked with browser automation, scraping, CAPTCHA bypassing and anti-detection techniques.",
+        "Worked with browser automation, scraping, CAPTCHA bypassing and anti-detection techniques",
         "Assembled and managed a distributed team of 10 people including engineers, customer support, BD.",
         "Completed Techstars Web3 2025, XFounders Season 4 and Founder.University Cohort 9 programs.",
       ],
@@ -101,7 +101,7 @@ const general: CVData = {
         "Fully owned & managed Salesforce integrations/pipelines.",
         "Built foundational domain systems (HS codes, manufacturing attributes, pricing logic).",
         "Architected and executed migration of the multi-repo architecture into a unified platform.",
-        "Built AI-powered HS codes search tool which cut down code search time for logistics team by 90%+.",
+        "Built AI-powered HS codes search tool which cut down code search time for logistics team by 90%+",
       ],
       tech: "Ruby on Rails, ReactJS, RSpec, PostgreSQL, Sidekiq, GraphQL, RabbitMQ, Redis, Python, Airflow",
     },
@@ -144,19 +144,19 @@ const general: CVData = {
   projects: [
     {
       title: "nodes.garden",
-      body: "Web3/AI NaaS platform built with Ruby on Rails. Finalist of Backdrop Build V4–V6.",
+      body: "Web3/AI NaaS platform built with Ruby on Rails. Finalist of Backdrop Build V4–V6:",
       href: "https://backdropbuild.com/builds/nodesgarden",
       linkLabel: "backdropbuild.com/builds/nodesgarden",
     },
     {
       title: "customs.codes",
-      body: "RAG customs codes AI classification tool built with Ruby on Rails. Finalist of Backdrop Build V3.",
+      body: "RAG customs codes AI classification tool built with Ruby on Rails. Finalist of Backdrop Build V3:",
       href: "https://backdropbuild.com/builds/v3/customscodes",
       linkLabel: "backdropbuild.com/builds/v3/customscodes",
     },
   ],
   skills: [
-    { label: "Languages", value: "Ruby, JavaScript, Python" },
+    { label: "Languages", value: "Ruby, Javascript, Python" },
     { label: "Backend", value: "Ruby on Rails, REST/GraphQL APIs, distributed systems, domain modeling" },
     { label: "Databases", value: "PostgreSQL, Redis" },
     { label: "Async", value: "Sidekiq, SolidQueue, RabbitMQ" },
