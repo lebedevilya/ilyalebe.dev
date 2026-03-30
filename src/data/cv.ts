@@ -114,12 +114,12 @@ const techstarsEducation: CVTimelineEntry = {
   body: "Participated in a 3-month startup accelerator program with onsite events in Dublin, London and New York",
 };
 
-const master'sEducation: CVTimelineEntry = {
+const mastersEducation: CVTimelineEntry = {
   title: "Master's Degree in Applied Mathematics and Computer Science",
   subtitle: "2017–2019 — Saint Petersburg State University",
 };
 
-const bachelor'sEducation: CVTimelineEntry = {
+const bachelorsEducation: CVTimelineEntry = {
   title: "Bachelor's Degree in Applied Mathematics and Computer Science",
   subtitle: "2013–2017 — Saint Petersburg State University",
 };
@@ -170,8 +170,8 @@ const general: CVData = {
   education: [
     xFoundersEducation,
     techstarsEducation,
-    master'sEducation,
-    bachelor'sEducation,
+    mastersEducation,
+    bachelorsEducation,
   ],
   projects: [nodesGardenProject, customsCodesProject],
   skills: [
