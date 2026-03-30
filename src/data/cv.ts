@@ -190,6 +190,7 @@ const general: CVData = {
 const backend: CVData = {
   ...general,
   slug: "backend",
+  title: "Backend Resume",
   headline: "Senior Backend Engineer (Ruby on Rails, PostgreSQL, APIs)",
   profile:
     "Backend-focused Ruby engineer with 8+ years of experience building distributed systems, PostgreSQL-backed products, and production-critical infrastructure. Strong on system design, async processing, data consistency, and operational reliability. Comfortable owning the backend from architecture through deployment and scaling.",
@@ -262,6 +263,7 @@ const backend: CVData = {
 const fullstack: CVData = {
   ...general,
   slug: "fullstack",
+  title: "Fullstack Resume",
   headline: "Senior Fullstack Engineer (Ruby on Rails, Hotwire, React)",
   profile:
     "Fullstack Ruby engineer with 8+ years shipping products end to end across backend systems, UIs, and operational tooling. Strong at turning product requirements into working Rails apps, with a practical bias toward delivery, maintainability, and production reliability.",

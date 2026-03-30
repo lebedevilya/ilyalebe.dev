@@ -16,7 +16,7 @@ const { cv } = Astro.props;
 <div class="mb-10">
   {cv.personalInfo.map((item) => (
     <div>
-      <b>{item.label}:</b> {item.value}
+      <b>{item.label}:</b>&nbsp;{item.value}
     </div>
   ))}
 </div>
@@ -113,7 +113,7 @@ const { cv } = Astro.props;
 <ul class="list-disc md:columns-3 columns-2 mx-6 mb-10">
   {cv.skills.map((skill) => (
     <li>
-      <b>{skill.label}:</b> {skill.value}
+      <b>{skill.label}:</b>&nbsp;{skill.value}
     </li>
   ))}
 </ul>
