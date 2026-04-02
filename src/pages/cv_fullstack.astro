@@ -1,0 +1,202 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TimeLineElement from "../components/cv/TimeLine.astro";
+---
+
+<BaseLayout title="Fullstack Resume" sideBarActiveItemID="cv">
+
+  <!-- PERSONAL INFO -->
+  <div class="mb-5">
+    <div class="text-3xl font-bold">Senior Fullstack Engineer (Ruby on Rails + Hotwire)</div>
+  </div>
+
+  <div class="mb-10">
+    <b>Name:</b> Ilya Lebedev<br>
+    <b>Location:</b> Remote (US/EU time zones), B2B contract<br>
+    <b>Languages:</b> Russian (Native), English (C2), Spanish (A1)
+  </div>
+
+  <!-- CONTACT -->
+  <div class="mb-5">
+    <div class="text-3xl font-bold">Contact</div>
+  </div>
+
+  <div class="mb-10">
+    <b>Website:</b>&nbsp;<a href="https://ilyalebe.dev">ilyalebe.dev</a><br>
+    <b>Email:</b> ilya0lebedev@gmail.com<br>
+    <b>LinkedIn:</b>&nbsp;<a href="https://www.linkedin.com/in/ilya-lebedev-554225102/">ilya-lebedev-554225102</a><br>
+    <b>Telegram:</b> @rubyminer<br>
+    <b>GitHub:</b>&nbsp;<a href="https://github.com/lebedevilya">lebedevilya</a>
+  </div>
+
+  <!-- PROFILE -->
+  <div class="mb-5">
+    <div class="text-3xl font-bold">Profile</div>
+  </div>
+
+  <div class="mb-10 text-justify">
+    Senior fullstack/product engineer with 8+ years of experience shipping Rails products end-to-end.
+    Ex-founder (Techstars '25), built and scaled an infrastructure-heavy platform to 17,000+ users and 25,000+ deployed nodes, while also delivering user-facing flows, internal tooling, and the backend systems behind them.
+    Strong focus on Ruby on Rails + Hotwire, fast product execution, and shipping business features without overcomplicating the stack.
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="mb-5">
+    <div class="text-3xl font-bold">Experience</div>
+  </div>
+
+  <div class="time-line-container mb-5">
+    <!-- NODES.GARDEN -->
+    <TimeLineElement
+      title="Technical Founder"
+      subtitle="Mar 2025 – Jan 2026 — nodes.garden (remote)"
+    >
+      <ul class="list-disc mx-6 mb-2 grid gap-2">
+        <li>Founded and led the product and technical development of a Web3/AI platform built with Ruby on Rails and PostgreSQL.</li>
+        <li>Built end-to-end workflows, APIs, and internal tooling used to manage large-scale infrastructure. 25,000+ nodes deployed in a year.</li>
+        <li>Scaled the platform from 0 to 17,000+ users and six-figure revenue.</li>
+        <li>Owned user flows, domain modeling, background processing, and deployment.</li>
+        <li>Worked with browser automation, scraping, CAPTCHA bypassing, and anti-detection techniques as part of product execution.</li>
+        <li>Assembled and managed a distributed team of 10 people including engineers, customer support, and business development.</li>
+        <li>Completed Techstars Web3 2025, XFounders Season 4, and Founder.University Cohort 9 programs.</li>
+      </ul>
+      <span class="text-sm font-light">
+        Tech: Ruby on Rails, PostgreSQL, RSpec, GoodJob, Hotwire, TailwindCSS, Docker, fly.io
+      </span>
+    </TimeLineElement>
+
+    <!-- REINVENTED HOSPITALITY -->
+    <TimeLineElement
+      title="Fullstack Ruby Engineer"
+      subtitle="Sep 2024 – Mar 2025 — reinvented-hospitality.com (remote)"
+    >
+      <ul class="list-disc mx-6 mb-2 grid gap-2">
+        <li>Built and launched a full-cycle POS system with Rails + Hotwire in under 3 months.</li>
+        <li>Designed and delivered user-facing flows for restaurant and hotel operations.</li>
+        <li>Shipped tax reports, data exports, and internal operational tooling.</li>
+      </ul>
+      <span class="text-sm font-light">
+        Tech: Ruby on Rails, PostgreSQL, Sidekiq, Hotwire, MiniTest, TailwindCSS, ViewComponent, AWS, Docker
+      </span>
+    </TimeLineElement>
+
+    <!-- XOMETRY -->
+    <TimeLineElement
+      title="Fullstack Ruby Engineer"
+      subtitle="Oct 2022 – Sep 2024 — xometry.de (remote)"
+    >
+      <ul class="list-disc mx-6 mb-2 grid gap-2">
+        <li>Shipped user-facing product flows for a large manufacturing marketplace serving hundreds of thousands of buyers and suppliers globally.</li>
+        <li>Implemented and launched UK and TR regional product experiences under tight deadlines.</li>
+        <li>Delivered end-to-end order, quoting, and logistics flows with supporting backend services and background processing.</li>
+        <li>Built internal tooling and operational interfaces used by sales, logistics, and support teams.</li>
+        <li>Owned key workflows across the stack, from UI behavior and API contracts to data consistency and release coordination.</li>
+        <li>Built an AI-powered HS codes search tool that cut code search time for the logistics team by 90%+.</li>
+        <li>Worked closely with product and operations to iterate quickly on business-facing features and integrations.</li>
+      </ul>
+      <span class="text-sm font-light">
+        Tech: Ruby on Rails, ReactJS, RSpec, PostgreSQL, Sidekiq, GraphQL, RabbitMQ, Redis, Python, Airflow
+      </span>
+    </TimeLineElement>
+
+    <!-- EARLIER EXPERIENCE -->
+    <TimeLineElement
+      title="Fullstack Ruby Engineer"
+      subtitle="2019 – 2021 at sputnik8.com, igooods.ru, rubyroidlabs.com (remote)"
+    >
+      Fullstack development across e-commerce, travel, insurance, and internal tooling products, with ownership of user-facing features, backend work, and business-critical integrations.
+      <br>
+      <span class="text-sm font-light">
+        Tech: Ruby on Rails, ReactJS, VueJS, RSpec, PostgreSQL, Sidekiq, GraphQL, REST APIs, Heroku, AWS
+      </span>
+    </TimeLineElement>
+
+    <TimeLineElement
+      title="Internships & Early Career"
+      subtitle="2017 – 2019"
+    >
+      <ul class="list-disc mx-6 mb-2 grid gap-2">
+        <li>
+          Yandex: Web Developer Intern. Python, ReactJS, GraphQL.
+        </li>
+        <li>
+          Joint Institute for Nuclear Research: C++/CUDA Developer Intern.
+        </li>
+        <li>
+          WorldQuant: Quantitative Research Consultant.
+        </li>
+      </ul>
+    </TimeLineElement>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="mb-5">
+    <div class="text-3xl font-bold">Education & Programs</div>
+  </div>
+
+  <div class="time-line-container grid gap-4 mb-10">
+    <TimeLineElement
+      title="XFounders Season 4"
+      subtitle="2025 — x-founders.com"
+    >
+      <p class="max-w-3xl leading-relaxed">
+        1 month on-site program involving dozens of startups and mentors, organized with Starknet Foundation
+      </p>
+    </TimeLineElement>
+    <TimeLineElement
+      title="Techstars Web3 '25"
+      subtitle="2025 — techstars.com"
+    >
+      <p class="max-w-3xl leading-relaxed">
+      Participated in a 3-month startup accelerator program with onsite events in Dublin, London and New York
+      </p>
+    </TimeLineElement>
+    <TimeLineElement
+      title="Master's Degree in Applied Mathematics and Computer Science"
+      subtitle="2017–2019 — Saint Petersburg State University"
+    />
+    <TimeLineElement
+      title="Bachelor's Degree in Applied Mathematics and Computer Science"
+      subtitle="2013–2017 — Saint Petersburg State University"
+    />
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="mb-5">
+    <div class="text-3xl font-bold">Selected Projects</div>
+  </div>
+
+  <div class="time-line-container mb-10">
+    <TimeLineElement title="nodes.garden">
+      <p class="max-w-3xl leading-relaxed">
+        Web3/AI NaaS platform built with Ruby on Rails. Finalist of Backdrop Build V4–V6:&nbsp;
+        <a href="https://backdropbuild.com/builds/nodesgarden">backdropbuild.com/builds/nodesgarden</a>
+      </p>
+    </TimeLineElement>
+
+    <TimeLineElement title="customs.codes">
+      <p class="max-w-3xl leading-relaxed">
+        RAG customs codes AI classification tool built with Ruby on Rails. Finalist of Backdrop Build V3:&nbsp;
+        <a href="https://backdropbuild.com/builds/v3/customscodes">backdropbuild.com/builds/v3/customscodes</a>
+      </p>
+    </TimeLineElement>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="mb-5">
+    <div class="text-3xl font-bold">Core Skills</div>
+  </div>
+
+  <ul class="list-disc md:columns-3 columns-2 mx-6 mb-10">
+    <li><b>Languages:</b> Ruby, Javascript, Python</li>
+    <li><b>Product:</b> End-to-end feature delivery, user-facing flows, internal tooling</li>
+    <li><b>Frontend:</b> Hotwire, ReactJS, VueJS, ViewComponent, TailwindCSS</li>
+    <li><b>Backend:</b> Ruby on Rails, REST/GraphQL APIs, domain modeling</li>
+    <li><b>Databases:</b> PostgreSQL, Redis</li>
+    <li><b>Async:</b> Sidekiq, SolidQueue, RabbitMQ</li>
+    <li><b>Infra:</b> Docker, CI/CD, AWS, GCP, fly.io, Heroku, Kamal</li>
+    <li><b>Observability:</b> Datadog, Sentry, Appsignal</li>
+    <li><b>Integrations:</b> Salesforce, Stripe, PayPal, CloudPayments, Copperx, LLM integrations</li>
+  </ul>
+
+</BaseLayout>
