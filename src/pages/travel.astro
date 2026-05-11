@@ -1,0 +1,17 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import WorldTravelMap from "../components/WorldTravelMap.astro";
+---
+
+<BaseLayout title="Travel" sideBarActiveItemID="travel">
+  <div class="w-[calc(100vw-3rem)] max-w-[96rem] lg:w-[calc(100vw-24rem)]">
+    <div class="mb-5">
+      <div class="text-3xl w-full font-bold">Travel</div>
+      <p class="mt-2 max-w-3xl text-base font-light">
+        Countries and cities I have visited, with the current country marked separately.
+      </p>
+    </div>
+
+    <WorldTravelMap />
+  </div>
+</BaseLayout>
