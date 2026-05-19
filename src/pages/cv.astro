@@ -1,6 +1,9 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import TimeLineElement from "../components/cv/TimeLine.astro";
+
+const arbitrumGrantUrl = "https://arbitrum.questbook.app/dashboard/?grantId=67d7ff7f46da2f90cc3205e9&role=community&chainId=10&proposalId=68d6c5b2306fa3a0a647b6bb&isRenderingProposalBody=true";
+const techstarsWeb3Url = "https://www.techstars.com/newsroom/announcing-the-techstars-web3-class-of-2025";
 ---
 
 <BaseLayout title="Resume" sideBarActiveItemID="cv">
@@ -36,7 +39,8 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
 
   <div class="mb-10 text-justify">
     Senior Backend Engineer with 8+ years of experience building scalable systems and distributed infrastructure.
-    Ex-founder (Techstars ‘25). Built and scaled infrastructure-heavy platform to 18,000+ users and 25,000+ deployed nodes.
+    Ex-founder (<a href={techstarsWeb3Url}>Techstars Web3 '25</a>). Built and scaled infrastructure-heavy platform to 18,000+ users and 25,000+ deployed nodes.
+    Secured an <a href={arbitrumGrantUrl}>Arbitrum ecosystem grant</a> and implemented Node NFT smart contracts and marketplace.
     Strong experience in backend architecture, REST APIs, background processing and performance optimization.
     Main stack: Ruby (Rails), with hands-on experience in JavaScript and Python. Comfortable working across different stacks.
   </div>
@@ -56,13 +60,15 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
         <li>Founded and led the technical development of Web3/AI node as a service platform.</li>
         <li>Built APIs and internal tooling used for managing large-scale infrastructure. 25,000+ nodes deployed in a year.</li>
         <li>Scaled platform from 0 to 18,000+ users and six-figure revenue.</li>
+        <li>Secured an <a href={arbitrumGrantUrl}>Arbitrum ecosystem grant</a> and implemented Node NFT smart contracts and marketplace.</li>
+        <li>Built smart contract, wallet, and indexing flows for NFT ownership sync, marketplace listings, cancellations, and purchases.</li>
         <li>Owned backend architecture, core domain modeling, background processing.</li>
         <li>Worked with browser automation, scraping, CAPTCHA bypassing and anti-detection techniques</li>
         <li>Assembled and managed a distributed team of 10 people including engineers, customer support, BD.</li>
-        <li>Completed Techstars Web3 2025, XFounders Season 4 and Founder.University Cohort 9 programs.</li>
+        <li>Completed <a href={techstarsWeb3Url}>Techstars Web3 2025</a>, XFounders Season 4 and Founder.University Cohort 9 programs.</li>
       </ul>
       <span class="text-sm font-light">
-        Tech: Ruby on Rails, PostgreSQL, RSpec, GoodJob, Hotwire, TailwindCSS, Docker, fly.io
+        Tech: Ruby on Rails, PostgreSQL, RSpec, GoodJob, Hotwire, TailwindCSS, Solidity, Foundry, OpenZeppelin, ethers.js, MetaMask, JSON-RPC, Arbitrum, Docker, fly.io
       </span>
     </TimeLineElement>
 
@@ -148,7 +154,7 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
       subtitle="2025 — techstars.com"
     >
       <p class="max-w-3xl leading-relaxed">
-      Selected for Techstars Web3 '25; scaled the business and pitched with on-site deep dives in Dublin & London
+      Selected for <a href={techstarsWeb3Url}>Techstars Web3 '25</a>; scaled the business and pitched with on-site deep dives in Dublin & London
       </p>
     </TimeLineElement>
     <TimeLineElement
@@ -176,7 +182,7 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
 
     <TimeLineElement title="nodes.garden">
       <p class="max-w-3xl leading-relaxed">
-        Web3/AI NaaS platform built with Ruby on Rails. Finalist of Backdrop Build V4–V6:&nbsp;
+        Web3/AI NaaS platform built with Ruby on Rails; secured an <a href={arbitrumGrantUrl}>Arbitrum ecosystem grant</a> and implemented Node NFT smart contracts and marketplace. Finalist of Backdrop Build V4–V6:&nbsp;
         <a href="https://backdropbuild.com/builds/nodesgarden">backdropbuild.com/builds/nodesgarden</a>
       </p>
     </TimeLineElement>
@@ -197,6 +203,7 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
   <ul class="list-disc md:columns-3 columns-2 mx-6 mb-10">
     <li><b>Languages:</b> Ruby, Javascript, Python</li>
     <li><b>Backend:</b> REST/GraphQL APIs, distributed systems, domain modeling, scalability, performance optimization</li>
+    <li><b>Web3:</b> Solidity, ERC-721, Foundry, OpenZeppelin, ethers.js, MetaMask, JSON-RPC indexing, Arbitrum</li>
     <li><b>Databases:</b> PostgreSQL, Redis</li>
     <li><b>Async:</b> Sidekiq, SolidQueue, RabbitMQ</li>
     <li><b>Infra:</b> Docker, CI/CD, AWS, GCP, fly.io, Heroku, Kamal</li>

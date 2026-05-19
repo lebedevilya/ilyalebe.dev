@@ -1,6 +1,9 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import TimeLineElement from "../components/cv/TimeLine.astro";
+
+const arbitrumGrantUrl = "https://arbitrum.questbook.app/dashboard/?grantId=67d7ff7f46da2f90cc3205e9&role=community&chainId=10&proposalId=68d6c5b2306fa3a0a647b6bb&isRenderingProposalBody=true";
+const techstarsWeb3Url = "https://www.techstars.com/newsroom/announcing-the-techstars-web3-class-of-2025";
 ---
 
 <BaseLayout title="Fullstack Resume" sideBarActiveItemID="cv">
@@ -36,7 +39,7 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
 
   <div class="mb-10 text-justify">
     Senior fullstack/product engineer with 8+ years of experience shipping Rails apps end-to-end.
-    Ex-founder (Techstars '25): built and scaled an infrastructure-heavy platform to 18,000+ users and 25,000+ deployed nodes, while also delivering user-facing flows, internal tooling and backend.
+    Ex-founder (<a href={techstarsWeb3Url}>Techstars Web3 '25</a>): built and scaled an infrastructure-heavy platform to 18,000+ users and 25,000+ deployed nodes, secured an <a href={arbitrumGrantUrl}>Arbitrum ecosystem grant</a>, and implemented Node NFT smart contracts and marketplace.
     Strong focus on Ruby on Rails, fast product execution and shipping business features without overcomplicating the stack.
   </div>
 
@@ -55,12 +58,14 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
         <li>Founded and led the product and technical development of a Web3/AI platform built with Ruby on Rails, Hotwire, PostgreSQL.</li>
         <li>Built end-to-end workflows, APIs and internal tooling used to manage large-scale infrastructure. 25,000+ nodes deployed in a year.</li>
         <li>Scaled the platform from 0 to 18,000+ users and $350k yearly revenue.</li>
+        <li>Secured an <a href={arbitrumGrantUrl}>Arbitrum ecosystem grant</a> and implemented Node NFT smart contracts and marketplace.</li>
+        <li>Built fullstack marketplace flows: browsing, listing, wallet approval, purchase, cancellation, and indexed ownership sync.</li>
         <li>Worked with browser automation, scraping, CAPTCHA bypassing and anti-detection techniques.</li>
         <li>Assembled and managed a distributed team of 10 people including engineers, customer support and business development.</li>
-        <li>Completed Techstars Web3 2025, XFounders Season 4 and Founder.University Cohort 9 programs.</li>
+        <li>Completed <a href={techstarsWeb3Url}>Techstars Web3 2025</a>, XFounders Season 4 and Founder.University Cohort 9 programs.</li>
       </ul>
       <span class="text-sm font-light">
-        Tech: Ruby on Rails, PostgreSQL, RSpec, GoodJob, Hotwire, TailwindCSS, Docker, fly.io
+        Tech: Ruby on Rails, PostgreSQL, RSpec, GoodJob, Hotwire, TailwindCSS, Solidity, Foundry, OpenZeppelin, ethers.js, MetaMask, JSON-RPC, Arbitrum, Docker, fly.io
       </span>
     </TimeLineElement>
 
@@ -145,7 +150,7 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
       subtitle="2025 — techstars.com"
     >
       <p class="max-w-3xl leading-relaxed">
-        Selected for Techstars Web3 '25; scaled the business and pitched with on-site deep dives in Dublin & London
+        Selected for <a href={techstarsWeb3Url}>Techstars Web3 '25</a>; scaled the business and pitched with on-site deep dives in Dublin & London
       </p>
     </TimeLineElement>
     <TimeLineElement
@@ -166,7 +171,7 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
   <div class="time-line-container mb-10">
     <TimeLineElement title="nodes.garden">
       <p class="max-w-3xl leading-relaxed">
-        Web3/AI NaaS platform built with Ruby on Rails. Finalist of Backdrop Build V4–V6:&nbsp;
+        Web3/AI NaaS platform built with Ruby on Rails; secured an <a href={arbitrumGrantUrl}>Arbitrum ecosystem grant</a> and implemented Node NFT smart contracts and marketplace. Finalist of Backdrop Build V4–V6:&nbsp;
         <a href="https://backdropbuild.com/builds/nodesgarden">backdropbuild.com/builds/nodesgarden</a>
       </p>
     </TimeLineElement>
@@ -188,6 +193,7 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
     <li><b>Languages:</b> Ruby, Javascript, Python</li>
     <li><b>Frontend:</b> Hotwire, React, Vue, ViewComponent, TailwindCSS</li>
     <li><b>Backend:</b> Ruby on Rails, REST/GraphQL APIs, domain modeling</li>
+    <li><b>Web3:</b> Solidity, ERC-721, Foundry, OpenZeppelin, ethers.js, MetaMask, JSON-RPC indexing, Arbitrum</li>
     <li><b>Databases:</b> PostgreSQL, Redis</li>
     <li><b>Async:</b> Sidekiq, SolidQueue, RabbitMQ</li>
     <li><b>Infra:</b> Docker, CI/CD, AWS, GCP, fly.io, Heroku, Kamal</li>
