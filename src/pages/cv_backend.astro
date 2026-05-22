@@ -171,6 +171,13 @@ const techstarsWeb3Url = "https://www.techstars.com/newsroom/announcing-the-tech
   </div>
 
   <div class="time-line-container mb-10">
+    <TimeLineElement title="slack-llm-bot">
+      <p class="max-w-3xl leading-relaxed">
+        Slack bot deployed as Vercel functions (TypeScript). HMAC signature verification, ack-within-3-seconds + async post-ack work via <code>waitUntil</code>, OpenAI tool-loop with a deterministic stats block prepended to LLM tool results, threaded memory via the Slack API, and optional Supabase pgvector for cross-thread recall. Offline LLM eval harness ships with the repo. MIT-licensed:&nbsp;
+        <a href="https://github.com/lebedevilya/slack-llm-bot">github.com/lebedevilya/slack-llm-bot</a>
+      </p>
+    </TimeLineElement>
+
     <TimeLineElement title="nodes.garden">
       <p class="max-w-3xl leading-relaxed">
         Web3/AI NaaS platform built with Ruby on Rails; secured an <a href={arbitrumGrantUrl}>Arbitrum ecosystem grant</a> and implemented Node NFT smart contracts and marketplace. Finalist of Backdrop Build V4–V6:&nbsp;
