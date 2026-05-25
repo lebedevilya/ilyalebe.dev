@@ -128,6 +128,19 @@ const schemaGraph = {
     document.addEventListener("astro:before-swap", function (event) {
       event.newDocument.documentElement.setAttribute("data-theme", currentTheme());
     });
+
+    // Blank the document title during print so the browser doesn't inject
+    // it as a page header at the top of every printed page (Chrome shows
+    // it when 'Headers and footers' is on in the print dialog, which is
+    // the default). Restored after the print dialog closes.
+    var titleBeforePrint = "";
+    window.addEventListener("beforeprint", function () {
+      titleBeforePrint = document.title;
+      document.title = " ";
+    });
+    window.addEventListener("afterprint", function () {
+      if (titleBeforePrint) document.title = titleBeforePrint;
+    });
   })();
 </script>
 

@@ -98,12 +98,20 @@
   .cv-page ul { margin: 2pt 0 2pt 14pt !important; padding: 0 !important; }
   .cv-page li { margin-bottom: 1pt !important; }
 
-  /* Try to keep each job/section block on one page. */
-  .cv-page section,
-  .cv-page .time-line-container > div {
-    break-inside: avoid;
-    page-break-inside: avoid;
+  /* Keep section headings glued to the first content after them, but let
+     long blocks (jobs, lists) split across pages so we don't leave 25% of
+     each page blank just to avoid a single split.  */
+  .cv-page h1,
+  .cv-page h2 {
+    break-after: avoid;
+    page-break-after: avoid;
   }
+
+  /* Tighten paragraph and list internals further so the whole CV fits two
+     pages without leaving slack. */
+  .cv-page p { margin: 0 0 2pt 0 !important; }
+  .cv-page br { line-height: 1 !important; }
+  .cv-page .text-justify { text-align: left !important; }
 
   /* Page setup: A4 with generous-enough margins. */
   @page {
