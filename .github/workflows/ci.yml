@@ -45,10 +45,10 @@ jobs:
         with:
           args: >-
             --no-progress
-            --accept 200,206,429
+            --accept 200,206,429,999
             --scheme http
             --scheme https
-            --base ./dist
+            --root-dir ${{ github.workspace }}/dist
             --exclude '^https?://localhost'
             --exclude '^https?://127\.0\.0\.1'
             --exclude '^https?://ilyalebe\.dev'
