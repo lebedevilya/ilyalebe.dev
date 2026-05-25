@@ -1,0 +1,40 @@
+# Ilya Lebedev
+
+> Senior fullstack/product engineer with 8+ years shipping Ruby on Rails apps end-to-end. Ex-founder (Techstars Web3 '25): built and scaled an infra-heavy platform to 18k+ users and 25k+ deployed nodes; secured an Arbitrum ecosystem grant; shipped Node NFT smart contracts and a marketplace. Currently working with LLM orchestration, RAG pipelines, and Web3 infrastructure. Remote (US/EU time zones), B2B contract; open to senior fullstack contract work and technical co-founder conversations.
+
+## CV variants
+
+- [General CV](https://ilyalebe.dev/cv): Full timeline of experience, education, programs, and selected projects.
+- [Fullstack CV](https://ilyalebe.dev/cv_fullstack): Senior Fullstack Engineer focus (Ruby on Rails, Hotwire, React).
+- [Backend CV](https://ilyalebe.dev/cv_backend): Senior Backend Engineer focus.
+- [PM CV](https://ilyalebe.dev/cv_pm): Product/PM angle on the same career.
+
+## Selected projects
+
+- [SupportOS](https://supportos.ilyalebe.dev/): Agentic customer support system prototype. Rails, SQLite, Rubyllm, Kamal.
+- [slack-llm-bot](https://github.com/lebedevilya/slack-llm-bot): Production-shaped Slack bot on Vercel. OpenAI tool-loop, threaded memory, optional Supabase pgvector long-term recall, and an offline eval harness with deterministic oracle + LLM judge. TypeScript, MIT-licensed.
+- [nodes.garden](https://backdropbuild.com/builds/nodesgarden): Web3/AI Node-as-a-Service platform. 25k+ deployed nodes, 18k+ users, Techstars Web3 '25 cohort. Rails, PostgreSQL, GoodJob, Docker, Fly.io.
+- [customs.codes](https://backdropbuild.com/builds/v3/customscodes): RAG-based AI search tool for customs codes. Backdrop Build V3 finalist. Discontinued. Rails, PostgreSQL.
+- [xometry.de](https://xometry.de): Manufacturing marketplace. Built async intercompany systems and regional apps as an employed engineer. Rails, PostgreSQL, React, GraphQL, RabbitMQ.
+
+## Profiles and contact
+
+- [Homepage](https://ilyalebe.dev): Bio, project highlights, and links to everything else.
+- [GitHub](https://github.com/lebedevilya): Public code and profile README.
+- [LinkedIn](https://www.linkedin.com/in/ilya-lebedev-554225102/): Professional network.
+
+## Skills
+
+- Languages: Ruby, JavaScript, TypeScript, Python, Solidity.
+- Backend: Ruby on Rails, REST and GraphQL APIs, domain modeling.
+- Frontend: Hotwire (Turbo + Stimulus), React, Vue, ViewComponent, TailwindCSS.
+- LLM and AI: OpenAI tool-loop, RAG pipelines, embeddings, pgvector, eval harnesses with deterministic oracle + LLM judge.
+- Web3: Solidity, ERC-721, Foundry, OpenZeppelin, ethers.js, JSON-RPC, Arbitrum.
+- Data: PostgreSQL, Redis, SQLite.
+- Async: Sidekiq, GoodJob, SolidQueue, RabbitMQ.
+- Infra: Docker, CI/CD, AWS, GCP, fly.io, Heroku, Vercel, Kamal.
+- Observability: Datadog, Sentry, Appsignal.
+
+## Optional
+
+- [Travel](https://ilyalebe.dev/travel): Countries visited (digital nomad context).
