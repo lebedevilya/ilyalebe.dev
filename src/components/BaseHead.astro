@@ -9,7 +9,65 @@ export interface Props {
 	image?: string;
 }
 
-const { title, description, image = '/pic1.jpeg' } = Astro.props;
+const { title, description, image = '/profile.png' } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const imageURL = new URL(image, Astro.site ?? Astro.url);
+const siteRoot = (Astro.site ?? Astro.url).toString().replace(/\/$/, "");
+
+// Pick OG type and the profile-specific meta block based on the route.
+const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
+const ogType = isHome ? "profile" : "website";
+
+// JSON-LD: Person + WebSite + (on the homepage) ProfilePage. Search and
+// answer engines (Google, Perplexity, ChatGPT search) preferentially index
+// pages that ship structured data describing the entity.
+const personSchema = {
+	"@context": "https://schema.org",
+	"@type": "Person",
+	"@id": `${siteRoot}/#person`,
+	"name": "Ilya Lebedev",
+	"givenName": "Ilya",
+	"familyName": "Lebedev",
+	"url": siteRoot,
+	"image": new URL("/profile.png", Astro.site ?? Astro.url).toString(),
+	"jobTitle": "Senior Fullstack Engineer & Technical Founder",
+	"description": "Senior fullstack/product engineer with 8+ years shipping Ruby on Rails apps end-to-end. Ex-founder (Techstars Web3 '25): scaled to 18k+ users and 25k+ deployed nodes. Currently working with LLM orchestration, RAG pipelines and Web3 infrastructure.",
+	"sameAs": [
+		"https://github.com/lebedevilya",
+		"https://www.linkedin.com/in/ilya-lebedev-554225102/",
+		"https://www.instagram.com/ilyalebe.dev/",
+		"https://www.youtube.com/channel/UCxdLFTIk7QMlunmCy4uC_Pw",
+		"https://t.me/rubyminer"
+	],
+	"knowsAbout": [
+		"Ruby on Rails", "TypeScript", "LLM orchestration", "RAG", "Web3",
+		"Solidity", "PostgreSQL", "Vercel", "OpenAI", "Hotwire", "React"
+	]
+};
+
+const websiteSchema = {
+	"@context": "https://schema.org",
+	"@type": "WebSite",
+	"@id": `${siteRoot}/#website`,
+	"url": siteRoot,
+	"name": "Ilya Lebedev",
+	"description": "Personal website and CV of Ilya Lebedev.",
+	"author": { "@id": `${siteRoot}/#person` }
+};
+
+const profilePageSchema = {
+	"@context": "https://schema.org",
+	"@type": "ProfilePage",
+	"url": siteRoot,
+	"mainEntity": { "@id": `${siteRoot}/#person` }
+};
+
+const schemaGraph = {
+	"@context": "https://schema.org",
+	"@graph": isHome
+		? [personSchema, websiteSchema, profilePageSchema]
+		: [personSchema, websiteSchema]
+};
 ---
 
 <!-- Global Metadata -->
@@ -17,6 +75,7 @@ const { title, description, image = '/pic1.jpeg' } = Astro.props;
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2250%22 fill=%22%23ffb1e7%22></rect><text x=%2250%%22 y=%2250%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%2290%22>🚀</text></svg>" />
 <meta name="generator" content={Astro.generator} />
+<link rel="canonical" href={canonicalURL} />
 
 <!-- Primary Meta Tags -->
 <title>{title}</title>
@@ -24,15 +83,25 @@ const { title, description, image = '/pic1.jpeg' } = Astro.props;
 <meta name="description" content={description} />
 
 <!-- Open Graph / Facebook -->
-<meta property="og:type" content="website" />
-<meta property="og:url" content={Astro.url} />
+<meta property="og:type" content={ogType} />
+<meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={new URL(image, Astro.url)} />
+<meta property="og:image" content={imageURL} />
+{isHome && (
+	<>
+		<meta property="og:profile:first_name" content="Ilya" />
+		<meta property="og:profile:last_name" content="Lebedev" />
+		<meta property="og:profile:username" content="lebedevilya" />
+	</>
+)}
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={Astro.url} />
+<meta property="twitter:url" content={canonicalURL} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={new URL(image, Astro.url)} />
+<meta property="twitter:image" content={imageURL} />
+
+<!-- Structured data -->
+<script type="application/ld+json" set:html={JSON.stringify(schemaGraph)} />
