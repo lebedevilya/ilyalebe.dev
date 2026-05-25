@@ -43,15 +43,19 @@ jobs:
       - name: Lychee link check
         uses: lycheeverse/lychee-action@v2
         with:
+          # LinkedIn aggressively blocks crawlers (returns 999 or 404 depending
+          # on source IP) so we skip it. linkedin.com URLs are stable and not
+          # something a build can introduce a bug in.
           args: >-
             --no-progress
-            --accept 200,206,429,999
+            --accept 200,206,429
             --scheme http
             --scheme https
             --root-dir ${{ github.workspace }}/dist
             --exclude '^https?://localhost'
             --exclude '^https?://127\.0\.0\.1'
             --exclude '^https?://ilyalebe\.dev'
+            --exclude '^https?://(www\.)?linkedin\.com'
             './dist/**/*.html'
             './dist/llms.txt'
           fail: true
