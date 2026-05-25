@@ -2,14 +2,15 @@
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="footer footer-center block mb-5 pt-10">
-  <div class="inline opacity-75">
-    <p>Powered by <a href="https://astro.build/" class="font-bold">Astro 🚀</a></p>
+<footer class="footer footer-center block mb-5 pt-10 opacity-75">
+  <div class="flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm">
+    <a href="/" class="link link-hover">Home</a>
+    <a href="/cv" class="link link-hover">CV</a>
+    <a href="/travel" class="link link-hover">Travel</a>
+    <a href="https://github.com/lebedevilya" target="_blank" rel="noopener noreferrer" class="link link-hover">GitHub</a>
+    <a href="https://www.linkedin.com/in/ilya-lebedev-554225102/" target="_blank" rel="noopener noreferrer" class="link link-hover">LinkedIn</a>
   </div>
-  <div class="pt-2">
-    <p>&copy; {currentYear} Ilya Lebedev</p>
+  <div class="pt-3 text-sm">
+    <p>&copy; {currentYear} Ilya Lebedev. Built with <a href="https://astro.build/" class="font-bold">Astro 🚀</a>.</p>
   </div>
 </footer>
-<style>
-
-</style>
