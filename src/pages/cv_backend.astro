@@ -1,12 +1,15 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import TimeLineElement from "../components/cv/TimeLine.astro";
+import DownloadPdfButton from "../components/cv/DownloadPdfButton.astro";
 
 const arbitrumGrantUrl = "https://arbitrum.questbook.app/dashboard/?grantId=67d7ff7f46da2f90cc3205e9&role=community&chainId=10&proposalId=68d6c5b2306fa3a0a647b6bb&isRenderingProposalBody=true";
 const techstarsWeb3Url = "https://www.techstars.com/newsroom/announcing-the-techstars-web3-class-of-2025";
 ---
 
 <BaseLayout title="Backend Resume | Ilya Lebedev" description="Senior Backend Engineer resume of Ilya Lebedev. Ruby on Rails depth, distributed systems, async pipelines, Web3 infrastructure. Ex-founder, Techstars Web3 '25." sideBarActiveItemID="cv" mainClass="cv-page">
+
+  <DownloadPdfButton />
 
   <!-- PERSONAL INFO -->
   <div class="mb-5">

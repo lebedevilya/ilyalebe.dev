@@ -23,3 +23,91 @@
   text-decoration-thickness: 1px;
   text-underline-offset: 0.15em;
 }
+
+/* ---------- Print stylesheet (CV PDF export) ---------- */
+/* Target: ~A4 / Letter, two pages. Strips chrome and tightens typography so
+   the rendered DOM of /cv* prints cleanly via the browser's "Save as PDF".
+   Marker classes used: `.print-hide` on anything we drop, `.cv-page` is the
+   <main> wrapper for every CV variant. */
+
+@media print {
+  /* Force light theme regardless of user preference for print output. */
+  :root, html[data-theme] {
+    color-scheme: light !important;
+  }
+  html[data-theme] {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  /* Hide all site chrome: sidebar, theme toggle, mobile header, site footer. */
+  .drawer-side,
+  header,
+  footer,
+  .print-hide {
+    display: none !important;
+  }
+
+  /* Drawer/main shouldn't waste space; collapse to full page width. */
+  .drawer,
+  .drawer-content,
+  .drawer-content > div,
+  main {
+    background: #fff !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* CV typography: tight, readable, black on white. */
+  .cv-page {
+    font-size: 10pt !important;
+    line-height: 1.35 !important;
+    color: #000 !important;
+    padding: 0 !important;
+  }
+  .cv-page h1 {
+    font-size: 18pt !important;
+    margin: 0 0 6pt 0 !important;
+  }
+  .cv-page h2 {
+    font-size: 13pt !important;
+    margin: 10pt 0 4pt 0 !important;
+    border-bottom: 0.5pt solid #999;
+    padding-bottom: 1pt;
+  }
+  .cv-page b,
+  .cv-page strong { font-weight: 600; }
+  .cv-page a {
+    color: #000 !important;
+    text-decoration: none !important;
+  }
+
+  /* Compact the section blocks. The on-screen layout uses big bottom margins
+     (mb-5, mb-10) which waste a printed page; drop them for print. */
+  .cv-page .mb-10 { margin-bottom: 6pt !important; }
+  .cv-page .mb-5  { margin-bottom: 4pt !important; }
+  .cv-page .mb-2  { margin-bottom: 2pt !important; }
+  .cv-page .py-3,
+  .cv-page .py-2  { padding: 1pt 0 !important; }
+
+  /* TimeLineElement: trim padding, suppress dot/line graphics. */
+  .cv-page .time-line-container { gap: 4pt !important; }
+  .cv-page .time-line-container > div { padding-bottom: 3pt !important; }
+  .cv-page ul { margin: 2pt 0 2pt 14pt !important; padding: 0 !important; }
+  .cv-page li { margin-bottom: 1pt !important; }
+
+  /* Try to keep each job/section block on one page. */
+  .cv-page section,
+  .cv-page .time-line-container > div {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Page setup: A4 with generous-enough margins. */
+  @page {
+    size: A4;
+    margin: 14mm 14mm 14mm 14mm;
+  }
+}
