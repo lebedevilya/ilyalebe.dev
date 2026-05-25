@@ -77,35 +77,43 @@ const schemaGraph = {
     var LIGHT = "lofi";
     var DARK = "dark";
 
-    function resolve() {
+    function stored() {
       try {
         var saved = localStorage.getItem(STORAGE_KEY);
         if (saved === LIGHT || saved === DARK) return saved;
       } catch (_) {}
+      return null;
+    }
+
+    function osPreferred() {
       return matchMedia("(prefers-color-scheme: dark)").matches ? DARK : LIGHT;
     }
 
+    // Apply only updates the DOM; persistence is separate so OS-derived
+    // values do not get frozen into localStorage on first visit.
     function apply(theme) {
       document.documentElement.setAttribute("data-theme", theme);
+    }
+
+    function persist(theme) {
       try { localStorage.setItem(STORAGE_KEY, theme); } catch (_) {}
     }
 
-    apply(resolve());
+    // Initial paint: explicit choice wins; otherwise follow OS without persisting.
+    apply(stored() || osPreferred());
 
-    // Expose a global so the sidebar toggle button can flip themes.
+    // Toggle button: this is the only path that writes to localStorage,
+    // so a first-time visitor who never clicks the button keeps following
+    // their OS preference across sessions and OS-theme changes.
     window.__toggleTheme = function () {
-      var current = document.documentElement.getAttribute("data-theme");
-      apply(current === DARK ? LIGHT : DARK);
+      var next = document.documentElement.getAttribute("data-theme") === DARK ? LIGHT : DARK;
+      apply(next);
+      persist(next);
     };
 
-    // ClientRouter preserves <html>, but re-bind the global on each navigation
-    // so navigating in does not lose the function reference if the head re-runs.
-    document.addEventListener("astro:after-swap", function () {
-      // data-theme survives the swap; nothing to do unless the user changed
-      // their OS theme mid-session and never picked one explicitly.
-      try {
-        if (!localStorage.getItem(STORAGE_KEY)) apply(resolve());
-      } catch (_) {}
+    // Auto-follow OS theme for visitors who never picked one.
+    matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function (e) {
+      if (!stored()) apply(e.matches ? DARK : LIGHT);
     });
   })();
 </script>
