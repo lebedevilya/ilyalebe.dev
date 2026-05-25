@@ -132,18 +132,64 @@ const travelMapData = JSON.stringify({
   import maplibregl from "maplibre-gl";
   import { geoMercator, geoPath } from "d3-geo";
 
-  const travelMapData = JSON.parse(document.getElementById("travel-map-data").textContent);
+  interface TravelCity {
+    name: string;
+    lat?: number;
+    lng?: number;
+  }
+
+  interface PlottedCity {
+    name: string;
+    lat: number;
+    lng: number;
+  }
+
+  interface TravelCountry {
+    code: string;
+    name: string;
+    note: string;
+    lat: number;
+    lng: number;
+    cities: TravelCity[];
+    countryId?: string;
+    isCurrent?: boolean;
+  }
+
+  interface TravelMapData {
+    countries: TravelCountry[];
+    currentCountryCode: string;
+    countriesGeoJSON: {
+      type: string;
+      features: Array<{
+        id?: string | number;
+        properties: {
+          code?: string;
+          visited?: boolean;
+          current?: boolean;
+          name?: string;
+          [key: string]: unknown;
+        };
+        geometry: unknown;
+        type: string;
+      }>;
+    };
+  }
+
+  const dataEl = document.getElementById("travel-map-data");
+  if (!dataEl) throw new Error("travel-map-data element not found");
+  const travelMapData = JSON.parse(dataEl.textContent ?? "{}") as TravelMapData;
   const { countries, currentCountryCode, countriesGeoJSON } = travelMapData;
-  const countryByCode = new Map(countries.map((country) => [country.code, country]));
+  const countryByCode = new Map<string, TravelCountry>(countries.map((country) => [country.code, country]));
   const detailsTitle = document.getElementById("travel-details-title");
   const detailsNote = document.getElementById("travel-details-note");
   const detailsCities = document.getElementById("travel-details-cities");
-  const clickableItems = document.querySelectorAll("[data-code]");
+  const clickableItems = document.querySelectorAll<HTMLElement>("[data-code]");
   const mapContainer = document.getElementById("travel-map");
+  if (!mapContainer) throw new Error("travel-map element not found");
   const markers = new Map();
   const cityMarkers = new Map();
   let activeCountryCode = currentCountryCode;
-  let activeCityKey = null;
+  let activeCityKey: string | null = null;
 
   const map = new maplibregl.Map({
     container: mapContainer,
@@ -168,19 +214,19 @@ const travelMapData = JSON.stringify({
   map.addControl(new maplibregl.NavigationControl({ showCompass: true }), "top-right");
   map.addControl(new maplibregl.AttributionControl({ compact: true }), "bottom-right");
 
-  function countryCities(country) {
-    return country.cities.filter((city) => city.lat !== undefined && city.lng !== undefined);
+  function countryCities(country: TravelCountry): PlottedCity[] {
+    return country.cities.filter((city): city is PlottedCity => city.lat !== undefined && city.lng !== undefined);
   }
 
-  function setActiveCountry(code, flyTo = true, selectedCity = null) {
+  function setActiveCountry(code: string, flyTo = true, selectedCity: TravelCity | null = null) {
     const country = countryByCode.get(code);
     if (!country) return;
 
     activeCountryCode = code;
     activeCityKey = selectedCity ? `${code}:${selectedCity.name}` : null;
-    detailsTitle.textContent = selectedCity ? `${selectedCity.name}, ${country.name}` : country.name;
-    detailsNote.textContent = country.note;
-    detailsCities.textContent = country.cities.length
+    if (detailsTitle) detailsTitle.textContent = selectedCity ? `${selectedCity.name}, ${country.name}` : country.name;
+    if (detailsNote) detailsNote.textContent = country.note;
+    if (detailsCities) detailsCities.textContent = country.cities.length
       ? country.cities.map((city) => city.name).join(", ")
       : "No city dots listed yet";
 
@@ -212,7 +258,7 @@ const travelMapData = JSON.stringify({
   }
 
   clickableItems.forEach((item) => {
-    item.addEventListener("click", () => setActiveCountry(item.dataset.code));
+    item.addEventListener("click", () => setActiveCountry(item.dataset.code ?? ""));
   });
 
   const countryOverlay = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -221,6 +267,7 @@ const travelMapData = JSON.stringify({
   mapContainer.appendChild(countryOverlay);
 
   function renderCountryOverlay() {
+    if (!mapContainer) return;
     const bounds = mapContainer.getBoundingClientRect();
     const center = map.getCenter();
     const scale = (512 * 2 ** map.getZoom()) / (2 * Math.PI);
@@ -245,15 +292,16 @@ const travelMapData = JSON.stringify({
             .filter(Boolean)
             .join(" ")
         );
-        if (feature.properties.code) {
+        const featureCode = feature.properties.code;
+        if (featureCode) {
           path.setAttribute("role", "button");
           path.setAttribute("tabindex", "0");
-          path.setAttribute("aria-label", feature.properties.name);
-          path.addEventListener("click", () => setActiveCountry(feature.properties.code));
+          path.setAttribute("aria-label", feature.properties.name ?? featureCode);
+          path.addEventListener("click", () => setActiveCountry(featureCode));
           path.addEventListener("keydown", (event) => {
             if (event.key === "Enter" || event.key === " ") {
               event.preventDefault();
-              setActiveCountry(feature.properties.code);
+              setActiveCountry(featureCode);
             }
           });
         }
