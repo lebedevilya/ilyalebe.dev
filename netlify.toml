@@ -1,0 +1,13 @@
+[build]
+  # `npm install` (not `npm ci`) so npm can fetch the host platform's
+  # optional native binaries that may be missing from a lockfile
+  # generated on a different platform (npm bug #4828, hits Tailwind 4's
+  # @tailwindcss/oxide-linux-x64-gnu specifically).
+  command = "npm install --include=optional && npm run build"
+  publish = "dist"
+
+[build.environment]
+  # Tailwind 4's oxide native binary needs Node 20+; pin to the LTS line
+  # the GitHub Actions CI also uses.
+  NODE_VERSION = "22"
+  NPM_CONFIG_INCLUDE_OPTIONAL = "true"

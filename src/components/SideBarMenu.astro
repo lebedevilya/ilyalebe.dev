@@ -10,13 +10,13 @@ const items = [
 ];
 ---
 
-<ul class="menu grow shrink menu-md overflow-y-auto">
+<ul class="menu menu-md w-full grow shrink overflow-y-auto">
     {items.map((item) => (
-        <li>
+        <li class="w-full">
             <a
                 id={item.id}
                 href={item.href}
-                class:list={["py-3 text-base", { [activeClass]: item.id === sideBarActiveItemID }]}
+                class:list={["py-3 text-base w-full", { [activeClass]: item.id === sideBarActiveItemID }]}
             >
                 {item.label}
             </a>

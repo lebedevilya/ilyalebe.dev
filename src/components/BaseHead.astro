@@ -70,6 +70,67 @@ const schemaGraph = {
 };
 ---
 
+<!-- Theme bootstrap (runs before first paint to avoid flash of wrong theme) -->
+<script is:inline>
+  (function () {
+    var STORAGE_KEY = "theme";
+    var LIGHT = "lofi";
+    var DARK = "dark";
+
+    function stored() {
+      try {
+        var saved = localStorage.getItem(STORAGE_KEY);
+        if (saved === LIGHT || saved === DARK) return saved;
+      } catch (_) {}
+      return null;
+    }
+
+    function osPreferred() {
+      return matchMedia("(prefers-color-scheme: dark)").matches ? DARK : LIGHT;
+    }
+
+    function currentTheme() {
+      return stored() || osPreferred();
+    }
+
+    // Apply only updates the DOM; persistence is separate so OS-derived
+    // values do not get frozen into localStorage on first visit.
+    function apply(theme) {
+      document.documentElement.setAttribute("data-theme", theme);
+    }
+
+    function persist(theme) {
+      try { localStorage.setItem(STORAGE_KEY, theme); } catch (_) {}
+    }
+
+    // Initial paint: explicit choice wins; otherwise follow OS without persisting.
+    apply(currentTheme());
+
+    // Toggle button: this is the only path that writes to localStorage,
+    // so a first-time visitor who never clicks the button keeps following
+    // their OS preference across sessions and OS-theme changes.
+    window.__toggleTheme = function () {
+      var next = document.documentElement.getAttribute("data-theme") === DARK ? LIGHT : DARK;
+      apply(next);
+      persist(next);
+    };
+
+    // Auto-follow OS theme for visitors who never picked one.
+    matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function (e) {
+      if (!stored()) apply(e.matches ? DARK : LIGHT);
+    });
+
+    // View Transitions caveat: every page ships with <html data-theme="lofi">
+    // as a no-JS fallback. When ClientRouter swaps to a new page, the
+    // incoming document's html attributes override the live ones, so any
+    // dark-theme choice would flash back to lofi on navigation. Patch the
+    // incoming document before the swap so the user never sees the flash.
+    document.addEventListener("astro:before-swap", function (event) {
+      event.newDocument.documentElement.setAttribute("data-theme", currentTheme());
+    });
+  })();
+</script>
+
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />

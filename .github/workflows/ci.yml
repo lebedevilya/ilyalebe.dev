@@ -45,9 +45,12 @@ jobs:
       - name: Lychee link check
         uses: lycheeverse/lychee-action@v2
         with:
-          # LinkedIn aggressively blocks crawlers (returns 999 or 404 depending
-          # on source IP) so we skip it. linkedin.com URLs are stable and not
-          # something a build can introduce a bug in.
+          # Excluded hosts:
+          # - linkedin.com: aggressive crawler blocking (999/404 depending on IP)
+          # - astro.build: rare but recurring 'connection reset by peer' flakes
+          # All four excluded domains are stable identifiers; a build cannot
+          # accidentally introduce a typo in them, so the cost of skipping is
+          # near zero.
           args: >-
             --no-progress
             --accept 200,206,429
@@ -58,6 +61,7 @@ jobs:
             --exclude '^https?://127\.0\.0\.1'
             --exclude '^https?://ilyalebe\.dev'
             --exclude '^https?://(www\.)?linkedin\.com'
+            --exclude '^https?://astro\.build'
             './dist/**/*.html'
             './dist/llms.txt'
           fail: true

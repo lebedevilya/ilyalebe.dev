@@ -4,6 +4,7 @@ import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import SideBar from "../components/SideBar.astro";
+import ThemeToggle from "../components/ThemeToggle.astro";
 
 import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
 
@@ -18,12 +19,13 @@ const {
 ---
 
 <!DOCTYPE html>
-<html lang="en" data-theme="lofi">
+<html lang="en" data-theme="lofi" class="scroll-smooth">
   <head>
     <BaseHead title={title} description={description} image={image} />
     <ClientRouter />
   </head>
   <body>
+    <ThemeToggle />
     <div class="bg-base-100 drawer lg:drawer-open">
       <input id="my-drawer" type="checkbox" class="drawer-toggle" />
       <div class="drawer-content bg-base-100">

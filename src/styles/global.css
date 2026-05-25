@@ -1,9 +1,25 @@
-.time-line-container>div:last-child .education__time>.education__line {
-    display: none;
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@plugin "daisyui" {
+  /* Two themes only: lofi (light, the original) and dark.
+     `default` makes lofi the initial theme; `prefersdark` makes the dark
+     entry follow prefers-color-scheme when no explicit choice is stored. */
+  themes: lofi --default, dark --prefersdark;
+  logs: false;
+}
+
+/* DaisyUI plugin emits its own `dark` variant based on the active theme,
+   so any `dark:` Tailwind utilities react to the daisyUI theme rather than
+   the OS scheme. Useful if we ever add custom dark-mode utility tweaks. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+.time-line-container > div:last-child .education__time > .education__line {
+  display: none;
 }
 
 .cv-page a {
-    text-decoration-line: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 0.15em;
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.15em;
 }
