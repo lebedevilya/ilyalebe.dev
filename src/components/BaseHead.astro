@@ -70,6 +70,46 @@ const schemaGraph = {
 };
 ---
 
+<!-- Theme bootstrap (runs before first paint to avoid flash of wrong theme) -->
+<script is:inline>
+  (function () {
+    var STORAGE_KEY = "theme";
+    var LIGHT = "lofi";
+    var DARK = "dark";
+
+    function resolve() {
+      try {
+        var saved = localStorage.getItem(STORAGE_KEY);
+        if (saved === LIGHT || saved === DARK) return saved;
+      } catch (_) {}
+      return matchMedia("(prefers-color-scheme: dark)").matches ? DARK : LIGHT;
+    }
+
+    function apply(theme) {
+      document.documentElement.setAttribute("data-theme", theme);
+      try { localStorage.setItem(STORAGE_KEY, theme); } catch (_) {}
+    }
+
+    apply(resolve());
+
+    // Expose a global so the sidebar toggle button can flip themes.
+    window.__toggleTheme = function () {
+      var current = document.documentElement.getAttribute("data-theme");
+      apply(current === DARK ? LIGHT : DARK);
+    };
+
+    // ClientRouter preserves <html>, but re-bind the global on each navigation
+    // so navigating in does not lose the function reference if the head re-runs.
+    document.addEventListener("astro:after-swap", function () {
+      // data-theme survives the swap; nothing to do unless the user changed
+      // their OS theme mid-session and never picked one explicitly.
+      try {
+        if (!localStorage.getItem(STORAGE_KEY)) apply(resolve());
+      } catch (_) {}
+    });
+  })();
+</script>
+
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
