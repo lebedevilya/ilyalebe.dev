@@ -12,22 +12,61 @@ export interface Props {
 const { title, description, image = '/profile.png' } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const imageURL = new URL(image, Astro.site ?? Astro.url);
+const siteRoot = (Astro.site ?? Astro.url).toString().replace(/\/$/, "");
 
-// JSON-LD Person schema for rich search results.
+// Pick OG type and the profile-specific meta block based on the route.
+const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
+const ogType = isHome ? "profile" : "website";
+
+// JSON-LD: Person + WebSite + (on the homepage) ProfilePage. Search and
+// answer engines (Google, Perplexity, ChatGPT search) preferentially index
+// pages that ship structured data describing the entity.
 const personSchema = {
 	"@context": "https://schema.org",
 	"@type": "Person",
+	"@id": `${siteRoot}/#person`,
 	"name": "Ilya Lebedev",
-	"url": "https://ilyalebe.dev",
+	"givenName": "Ilya",
+	"familyName": "Lebedev",
+	"url": siteRoot,
 	"image": new URL("/profile.png", Astro.site ?? Astro.url).toString(),
 	"jobTitle": "Senior Fullstack Engineer & Technical Founder",
+	"description": "Senior fullstack/product engineer with 8+ years shipping Ruby on Rails apps end-to-end. Ex-founder (Techstars Web3 '25): scaled to 18k+ users and 25k+ deployed nodes. Currently working with LLM orchestration, RAG pipelines and Web3 infrastructure.",
 	"sameAs": [
 		"https://github.com/lebedevilya",
 		"https://www.linkedin.com/in/ilya-lebedev-554225102/",
 		"https://www.instagram.com/ilyalebe.dev/",
 		"https://www.youtube.com/channel/UCxdLFTIk7QMlunmCy4uC_Pw",
 		"https://t.me/rubyminer"
+	],
+	"knowsAbout": [
+		"Ruby on Rails", "TypeScript", "LLM orchestration", "RAG", "Web3",
+		"Solidity", "PostgreSQL", "Vercel", "OpenAI", "Hotwire", "React"
 	]
+};
+
+const websiteSchema = {
+	"@context": "https://schema.org",
+	"@type": "WebSite",
+	"@id": `${siteRoot}/#website`,
+	"url": siteRoot,
+	"name": "Ilya Lebedev",
+	"description": "Personal website and CV of Ilya Lebedev.",
+	"author": { "@id": `${siteRoot}/#person` }
+};
+
+const profilePageSchema = {
+	"@context": "https://schema.org",
+	"@type": "ProfilePage",
+	"url": siteRoot,
+	"mainEntity": { "@id": `${siteRoot}/#person` }
+};
+
+const schemaGraph = {
+	"@context": "https://schema.org",
+	"@graph": isHome
+		? [personSchema, websiteSchema, profilePageSchema]
+		: [personSchema, websiteSchema]
 };
 ---
 
@@ -44,11 +83,18 @@ const personSchema = {
 <meta name="description" content={description} />
 
 <!-- Open Graph / Facebook -->
-<meta property="og:type" content="website" />
+<meta property="og:type" content={ogType} />
 <meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={imageURL} />
+{isHome && (
+	<>
+		<meta property="og:profile:first_name" content="Ilya" />
+		<meta property="og:profile:last_name" content="Lebedev" />
+		<meta property="og:profile:username" content="lebedevilya" />
+	</>
+)}
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
@@ -58,4 +104,4 @@ const personSchema = {
 <meta property="twitter:image" content={imageURL} />
 
 <!-- Structured data -->
-<script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(schemaGraph)} />
