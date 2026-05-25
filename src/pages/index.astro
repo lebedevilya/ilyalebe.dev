@@ -7,8 +7,48 @@ import { visitedCountries } from "../data/travel";
 <BaseLayout sideBarActiveItemID="home">
   <div class="lg:mt-4 lg:px-20">
     <div class="text-xl py-1">Hey there 👋</div>
-    <div class="text-5xl font-bold">I'm Ilya Lebedev</div>
-    <div class="text-3xl py-3 font-bold">Software Engineer and Technical founder</div>
+    <h1 class="text-5xl font-bold">I'm Ilya Lebedev</h1>
+    <p class="text-3xl py-3 font-bold">Software Engineer and Technical founder</p>
+
+    <!-- Currently -->
+    <div class="card bg-base-200 my-5">
+      <div class="card-body p-5 gap-2">
+        <div class="flex flex-wrap items-center gap-x-2 gap-y-1">
+          <span class="relative flex h-3 w-3" aria-hidden="true">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-success opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-success"></span>
+          </span>
+          <span class="font-bold">Currently:</span>
+          <span>open to senior fullstack contract work and technical co-founder conversations.</span>
+        </div>
+        <div class="text-sm opacity-80">
+          <span class="font-semibold">Last shipped:</span>
+          <a href="https://github.com/lebedevilya/slack-llm-bot" class="link link-hover" target="_blank" rel="noopener noreferrer">slack-llm-bot</a>,
+          a production-shaped Slack bot with an offline LLM eval harness.
+        </div>
+      </div>
+    </div>
+
+    <!-- Tech stack badges -->
+    <div class="my-5">
+      <div class="text-sm font-semibold opacity-75 mb-2">Working with:</div>
+      <div class="flex flex-wrap gap-1.5">
+        <img alt="Ruby on Rails" src="https://img.shields.io/badge/rails-%23CC0000.svg?style=flat-square&logo=rubyonrails&logoColor=white" />
+        <img alt="TypeScript" src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=flat-square&logo=typescript&logoColor=white" />
+        <img alt="Hotwire" src="https://img.shields.io/badge/Hotwire-Turbo%2BStimulus-yellow?style=flat-square" />
+        <img alt="React" src="https://img.shields.io/badge/react-%2320232a.svg?style=flat-square&logo=react&logoColor=%2361DAFB" />
+        <img alt="PostgreSQL" src="https://img.shields.io/badge/postgres-%23316192.svg?style=flat-square&logo=postgresql&logoColor=white" />
+        <img alt="OpenAI" src="https://img.shields.io/badge/OpenAI-412991?style=flat-square&logo=openai&logoColor=white" />
+        <img alt="Solidity" src="https://img.shields.io/badge/solidity-%23363636.svg?style=flat-square&logo=solidity&logoColor=white" />
+        <img alt="Vercel" src="https://img.shields.io/badge/vercel-%23000000.svg?style=flat-square&logo=vercel&logoColor=white" />
+        <img alt="AWS" src="https://img.shields.io/badge/AWS-%23FF9900.svg?style=flat-square&logo=amazon-aws&logoColor=white" />
+        <img alt="Docker" src="https://img.shields.io/badge/docker-%230db7ed.svg?style=flat-square&logo=docker&logoColor=white" />
+        <img alt="TailwindCSS" src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=flat-square&logo=tailwind-css&logoColor=white" />
+      </div>
+    </div>
+
+    <div class="divider my-2"></div>
+
     <div class="py-2">
       <p class="text-lg">
         I love to build products with real impact to the world. My main speciality is Ruby on Rails development and I'm constantly seeking opportunities to expand my knowledge and stay at the forefront of the tech landscape.
@@ -62,7 +102,7 @@ import { visitedCountries } from "../data/travel";
   </div>
 
   <div class="lg:px-28">
-    <div class="text-3xl w-full font-bold mb-8">My last projects {"</>"}</div>
+    <h2 class="text-3xl w-full font-bold mb-8">My last projects {"</>"}</h2>
 
     <HorizontalCard
       title="SupportOS"
