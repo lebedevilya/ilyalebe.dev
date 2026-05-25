@@ -1,16 +1,25 @@
 ---
 const { sideBarActiveItemID } = Astro.props;
 const activeClass = "bg-base-300"; // For primary color replace with `active` class
+
+const items = [
+    { id: "home", label: "Home", href: "/" },
+    { id: "cv", label: "CV", href: "/cv" },
+    { id: "travel", label: "Travel", href: "/travel" },
+    { id: "contact", label: "Contact", href: "/contact" },
+];
 ---
 
 <ul class="menu grow shrink menu-md overflow-y-auto">
-    <li><a class="py-3 text-base" id="home" href="/">Home</a></li>
-    <li><a class="py-3 text-base" id="cv" href="/cv">CV</a></li>
-    <li><a class="py-3 text-base" id="travel" href="/travel">Travel</a></li>
-    <li><a class="py-3 text-base" id="contact" href="/cv#contact">Contact</a></li>
+    {items.map((item) => (
+        <li>
+            <a
+                id={item.id}
+                href={item.href}
+                class:list={["py-3 text-base", { [activeClass]: item.id === sideBarActiveItemID }]}
+            >
+                {item.label}
+            </a>
+        </li>
+    ))}
 </ul>
-
-<script define:vars={{ sideBarActiveItemID: sideBarActiveItemID, activeClass: activeClass }}>
-const activeItemElem = document.getElementById(sideBarActiveItemID);
-activeItemElem && activeItemElem.classList.add(activeClass);
-</script>

@@ -175,176 +175,189 @@ const travelMapData = JSON.stringify({
     };
   }
 
-  const dataEl = document.getElementById("travel-map-data");
-  if (!dataEl) throw new Error("travel-map-data element not found");
-  const travelMapData = JSON.parse(dataEl.textContent ?? "{}") as TravelMapData;
-  const { countries, currentCountryCode, countriesGeoJSON } = travelMapData;
-  const countryByCode = new Map<string, TravelCountry>(countries.map((country) => [country.code, country]));
-  const detailsTitle = document.getElementById("travel-details-title");
-  const detailsNote = document.getElementById("travel-details-note");
-  const detailsCities = document.getElementById("travel-details-cities");
-  const clickableItems = document.querySelectorAll<HTMLElement>("[data-code]");
-  const mapContainer = document.getElementById("travel-map");
-  if (!mapContainer) throw new Error("travel-map element not found");
-  const markers = new Map();
-  const cityMarkers = new Map();
-  let activeCountryCode = currentCountryCode;
-  let activeCityKey: string | null = null;
+  let map: maplibregl.Map | null = null;
 
-  const map = new maplibregl.Map({
-    container: mapContainer,
-    style: {
-      version: 8,
-      sources: {},
-      layers: [
-        {
-          id: "background",
-          type: "background",
-          paint: {
-            "background-color": "#dceff5",
+  function init() {
+    if (!document.getElementById("travel-map")) return;
+
+    if (map) {
+      map.remove();
+      map = null;
+    }
+
+    const dataEl = document.getElementById("travel-map-data");
+    if (!dataEl) throw new Error("travel-map-data element not found");
+    const travelMapData = JSON.parse(dataEl.textContent ?? "{}") as TravelMapData;
+    const { countries, currentCountryCode, countriesGeoJSON } = travelMapData;
+    const countryByCode = new Map<string, TravelCountry>(countries.map((country) => [country.code, country]));
+    const detailsTitle = document.getElementById("travel-details-title");
+    const detailsNote = document.getElementById("travel-details-note");
+    const detailsCities = document.getElementById("travel-details-cities");
+    const clickableItems = document.querySelectorAll<HTMLElement>("[data-code]");
+    const mapContainer = document.getElementById("travel-map");
+    if (!mapContainer) throw new Error("travel-map element not found");
+    const markers = new Map();
+    const cityMarkers = new Map();
+    let activeCountryCode = currentCountryCode;
+    let activeCityKey: string | null = null;
+
+    map = new maplibregl.Map({
+      container: mapContainer,
+      style: {
+        version: 8,
+        sources: {},
+        layers: [
+          {
+            id: "background",
+            type: "background",
+            paint: {
+              "background-color": "#dceff5",
+            },
           },
-        },
-      ],
-    },
-    center: [67, 35],
-    zoom: 1.55,
-    attributionControl: false,
-  });
+        ],
+      },
+      center: [67, 35],
+      zoom: 1.55,
+      attributionControl: false,
+    });
 
-  map.addControl(new maplibregl.NavigationControl({ showCompass: true }), "top-right");
-  map.addControl(new maplibregl.AttributionControl({ compact: true }), "bottom-right");
+    map.addControl(new maplibregl.NavigationControl({ showCompass: true }), "top-right");
+    map.addControl(new maplibregl.AttributionControl({ compact: true }), "bottom-right");
 
-  function countryCities(country: TravelCountry): PlottedCity[] {
-    return country.cities.filter((city): city is PlottedCity => city.lat !== undefined && city.lng !== undefined);
-  }
+    function countryCities(country: TravelCountry): PlottedCity[] {
+      return country.cities.filter((city): city is PlottedCity => city.lat !== undefined && city.lng !== undefined);
+    }
 
-  function setActiveCountry(code: string, flyTo = true, selectedCity: TravelCity | null = null) {
-    const country = countryByCode.get(code);
-    if (!country) return;
+    function setActiveCountry(code: string, flyTo = true, selectedCity: TravelCity | null = null) {
+      const country = countryByCode.get(code);
+      if (!country) return;
 
-    activeCountryCode = code;
-    activeCityKey = selectedCity ? `${code}:${selectedCity.name}` : null;
-    if (detailsTitle) detailsTitle.textContent = selectedCity ? `${selectedCity.name}, ${country.name}` : country.name;
-    if (detailsNote) detailsNote.textContent = country.note;
-    if (detailsCities) detailsCities.textContent = country.cities.length
-      ? country.cities.map((city) => city.name).join(", ")
-      : "No city dots listed yet";
+      activeCountryCode = code;
+      activeCityKey = selectedCity ? `${code}:${selectedCity.name}` : null;
+      if (detailsTitle) detailsTitle.textContent = selectedCity ? `${selectedCity.name}, ${country.name}` : country.name;
+      if (detailsNote) detailsNote.textContent = country.note;
+      if (detailsCities) detailsCities.textContent = country.cities.length
+        ? country.cities.map((city) => city.name).join(", ")
+        : "No city dots listed yet";
+
+      clickableItems.forEach((item) => {
+        item.classList.toggle("travel-active", item.dataset.code === code);
+      });
+
+      markers.forEach((marker, markerCode) => {
+        marker.getElement().classList.toggle("travel-marker--active", markerCode === code);
+      });
+
+      cityMarkers.forEach((marker, cityKey) => {
+        marker.getElement().classList.toggle("travel-city-marker--active", cityKey === activeCityKey);
+      });
+
+      renderCountryOverlay();
+
+      if (flyTo) {
+        const cities = countryCities(country);
+        const target = cities[0] ?? country;
+
+        map!.flyTo({
+          center: [target.lng, target.lat],
+          zoom: Math.max(map!.getZoom(), cities.length ? 3.4 : 2.5),
+          speed: 0.9,
+          essential: true,
+        });
+      }
+    }
 
     clickableItems.forEach((item) => {
-      item.classList.toggle("travel-active", item.dataset.code === code);
+      item.addEventListener("click", () => setActiveCountry(item.dataset.code ?? ""));
     });
 
-    markers.forEach((marker, markerCode) => {
-      marker.getElement().classList.toggle("travel-marker--active", markerCode === code);
-    });
+    const countryOverlay = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    countryOverlay.classList.add("travel-country-overlay");
+    countryOverlay.setAttribute("aria-label", "Visited countries");
+    mapContainer.appendChild(countryOverlay);
 
-    cityMarkers.forEach((marker, cityKey) => {
-      marker.getElement().classList.toggle("travel-city-marker--active", cityKey === activeCityKey);
-    });
+    function renderCountryOverlay() {
+      if (!mapContainer) return;
+      const bounds = mapContainer.getBoundingClientRect();
+      const center = map!.getCenter();
+      const scale = (512 * 2 ** map!.getZoom()) / (2 * Math.PI);
+      const projection = geoMercator()
+        .scale(scale)
+        .center([center.lng, center.lat])
+        .translate([bounds.width / 2, bounds.height / 2]);
+      const pathGenerator = geoPath(projection);
 
+      countryOverlay.setAttribute("viewBox", `0 0 ${bounds.width} ${bounds.height}`);
+      countryOverlay.replaceChildren(
+        ...countriesGeoJSON.features.map((feature) => {
+          const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+          path.setAttribute("d", pathGenerator(feature));
+          path.setAttribute(
+            "class",
+            [
+              "travel-country-shape",
+              feature.properties.visited ? "travel-country-shape--visited" : "",
+              feature.properties.code === activeCountryCode ? "travel-country-shape--active" : "",
+            ]
+              .filter(Boolean)
+              .join(" ")
+          );
+          const featureCode = feature.properties.code;
+          if (featureCode) {
+            path.setAttribute("role", "button");
+            path.setAttribute("tabindex", "0");
+            path.setAttribute("aria-label", feature.properties.name ?? featureCode);
+            path.addEventListener("click", () => setActiveCountry(featureCode));
+            path.addEventListener("keydown", (event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                setActiveCountry(featureCode);
+              }
+            });
+          }
+          return path;
+        })
+      );
+    }
+
+    map.on("load", renderCountryOverlay);
+    map.on("move", renderCountryOverlay);
+    map.on("zoom", renderCountryOverlay);
+    map.on("resize", renderCountryOverlay);
     renderCountryOverlay();
 
-    if (flyTo) {
-      const cities = countryCities(country);
-      const target = cities[0] ?? country;
+    countries.forEach((country) => {
+      const countryMarkerElement = document.createElement("button");
+      countryMarkerElement.className = `travel-marker travel-marker--country${country.code === currentCountryCode ? " travel-marker--current" : ""}`;
+      countryMarkerElement.type = "button";
+      countryMarkerElement.setAttribute("aria-label", country.name);
+      countryMarkerElement.addEventListener("click", () => setActiveCountry(country.code, false));
 
-      map.flyTo({
-        center: [target.lng, target.lat],
-        zoom: Math.max(map.getZoom(), cities.length ? 3.4 : 2.5),
-        speed: 0.9,
-        essential: true,
+      const countryMarker = new maplibregl.Marker({ element: countryMarkerElement })
+        .setLngLat([country.lng, country.lat])
+        .addTo(map!);
+
+      markers.set(country.code, countryMarker);
+
+      countryCities(country).forEach((city) => {
+        const cityMarkerElement = document.createElement("button");
+        cityMarkerElement.className = "travel-marker travel-marker--city";
+        cityMarkerElement.type = "button";
+        cityMarkerElement.setAttribute("aria-label", `${city.name}, ${country.name}`);
+        cityMarkerElement.addEventListener("click", () => setActiveCountry(country.code, false, city));
+
+        const cityMarker = new maplibregl.Marker({ element: cityMarkerElement })
+          .setLngLat([city.lng, city.lat])
+          .addTo(map!);
+
+        cityMarkers.set(`${country.code}:${city.name}`, cityMarker);
       });
-    }
-  }
-
-  clickableItems.forEach((item) => {
-    item.addEventListener("click", () => setActiveCountry(item.dataset.code ?? ""));
-  });
-
-  const countryOverlay = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  countryOverlay.classList.add("travel-country-overlay");
-  countryOverlay.setAttribute("aria-label", "Visited countries");
-  mapContainer.appendChild(countryOverlay);
-
-  function renderCountryOverlay() {
-    if (!mapContainer) return;
-    const bounds = mapContainer.getBoundingClientRect();
-    const center = map.getCenter();
-    const scale = (512 * 2 ** map.getZoom()) / (2 * Math.PI);
-    const projection = geoMercator()
-      .scale(scale)
-      .center([center.lng, center.lat])
-      .translate([bounds.width / 2, bounds.height / 2]);
-    const pathGenerator = geoPath(projection);
-
-    countryOverlay.setAttribute("viewBox", `0 0 ${bounds.width} ${bounds.height}`);
-    countryOverlay.replaceChildren(
-      ...countriesGeoJSON.features.map((feature) => {
-        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-        path.setAttribute("d", pathGenerator(feature));
-        path.setAttribute(
-          "class",
-          [
-            "travel-country-shape",
-            feature.properties.visited ? "travel-country-shape--visited" : "",
-            feature.properties.code === activeCountryCode ? "travel-country-shape--active" : "",
-          ]
-            .filter(Boolean)
-            .join(" ")
-        );
-        const featureCode = feature.properties.code;
-        if (featureCode) {
-          path.setAttribute("role", "button");
-          path.setAttribute("tabindex", "0");
-          path.setAttribute("aria-label", feature.properties.name ?? featureCode);
-          path.addEventListener("click", () => setActiveCountry(featureCode));
-          path.addEventListener("keydown", (event) => {
-            if (event.key === "Enter" || event.key === " ") {
-              event.preventDefault();
-              setActiveCountry(featureCode);
-            }
-          });
-        }
-        return path;
-      })
-    );
-  }
-
-  map.on("load", renderCountryOverlay);
-  map.on("move", renderCountryOverlay);
-  map.on("zoom", renderCountryOverlay);
-  map.on("resize", renderCountryOverlay);
-  renderCountryOverlay();
-
-  countries.forEach((country) => {
-    const countryMarkerElement = document.createElement("button");
-    countryMarkerElement.className = `travel-marker travel-marker--country${country.code === currentCountryCode ? " travel-marker--current" : ""}`;
-    countryMarkerElement.type = "button";
-    countryMarkerElement.setAttribute("aria-label", country.name);
-    countryMarkerElement.addEventListener("click", () => setActiveCountry(country.code, false));
-
-    const countryMarker = new maplibregl.Marker({ element: countryMarkerElement })
-      .setLngLat([country.lng, country.lat])
-      .addTo(map);
-
-    markers.set(country.code, countryMarker);
-
-    countryCities(country).forEach((city) => {
-      const cityMarkerElement = document.createElement("button");
-      cityMarkerElement.className = "travel-marker travel-marker--city";
-      cityMarkerElement.type = "button";
-      cityMarkerElement.setAttribute("aria-label", `${city.name}, ${country.name}`);
-      cityMarkerElement.addEventListener("click", () => setActiveCountry(country.code, false, city));
-
-      const cityMarker = new maplibregl.Marker({ element: cityMarkerElement })
-        .setLngLat([city.lng, city.lat])
-        .addTo(map);
-
-      cityMarkers.set(`${country.code}:${city.name}`, cityMarker);
     });
-  });
 
-  setActiveCountry(currentCountryCode, false);
+    setActiveCountry(currentCountryCode, false);
+  }
+
+  document.addEventListener("astro:page-load", init);
 </script>
 
 <style is:global>
