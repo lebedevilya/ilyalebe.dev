@@ -4,6 +4,80 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
 
 const arbitrumGrantUrl = "https://arbitrum.questbook.app/dashboard/?grantId=67d7ff7f46da2f90cc3205e9&role=community&chainId=10&proposalId=68d6c5b2306fa3a0a647b6bb&isRenderingProposalBody=true";
 const techstarsWeb3Url = "https://www.techstars.com/newsroom/announcing-the-techstars-web3-class-of-2025";
+
+// FAQPage JSON-LD: answer-engine optimisation for Perplexity, ChatGPT search,
+// Google's AI overviews. Each question is a typical recruiter inquiry; the
+// answer is short, citable, and links to the canonical source where useful.
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How many years of experience does Ilya Lebedev have?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "8+ years building production Ruby on Rails applications end-to-end. Senior roles at Xometry (manufacturing marketplace, two years) and reinvented-hospitality.com (built and launched a full POS in three months). Most recently a year as technical founder of nodes.garden."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Ilya available for hire?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, currently open to senior fullstack contract work and technical co-founder conversations. Remote, US/EU time zones, B2B contract. The fastest way to start a conversation is the 30-minute Calendly slot at https://calendly.com/ilya0lebedev/30min."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What technology stack does Ilya specialise in?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ruby on Rails primarily, with Hotwire (Turbo + Stimulus) and React on the frontend. PostgreSQL, Redis, Sidekiq / GoodJob for data and background work. Recent work also covers TypeScript, OpenAI tool-loops, RAG pipelines with pgvector, and Solidity, Foundry, OpenZeppelin, ethers.js on the Web3 side."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Ilya have founder experience?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Founded nodes.garden, a Web3/AI Node-as-a-Service platform scaled to 18,000+ users and 25,000+ deployed nodes. Secured an Arbitrum ecosystem grant, shipped Node NFT smart contracts and a marketplace, and was selected for the Techstars Web3 '25 cohort along with XFounders Season 4 and Founder.University Cohort 9."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is Ilya's experience with LLMs and applied AI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Production LLM orchestration work including the open-source slack-llm-bot at https://github.com/lebedevilya/slack-llm-bot (OpenAI tool-loop, threaded memory, optional pgvector long-term recall, offline eval harness with a deterministic oracle and LLM judge). Previously built customs.codes, a RAG-based AI search tool for customs codes that was a Backdrop Build V3 finalist."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where is Ilya based?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Digital nomad. Available for B2B contract engagements globally; comfortable working both US and EU time zones."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is Ilya's educational background?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "M.Sc. in Applied Mathematics and Computer Science, Saint Petersburg State University (2019). Selected programs since: Techstars Web3 '25, XFounders Season 4 (2025), Founder.University Cohort 9 (2025)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How can someone get in touch with Ilya?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Book a 30-minute call at https://calendly.com/ilya0lebedev/30min, or message via LinkedIn for professional inquiries. Telegram (@rubyminer) for casual chats. Full options at https://ilyalebe.dev/contact."
+      }
+    }
+  ]
+};
 ---
 
 <BaseLayout title="Resume | Ilya Lebedev" description="Resume of Ilya Lebedev: Senior fullstack/product engineer, ex-founder (Techstars Web3 '25). Full timeline of experience, education, programs, and selected projects." sideBarActiveItemID="cv" mainClass="cv-page">
@@ -217,5 +291,8 @@ const techstarsWeb3Url = "https://www.techstars.com/newsroom/announcing-the-tech
     <li><b>AI:</b> LLM integrations, RAG, vector DBs</li>
     <li><b>Payments:</b> Stripe, PayPal, CloudPayments, Copperx & others</li>
   </ul>
+
+  <!-- FAQ structured data (invisible to humans; consumed by Perplexity, ChatGPT search, Google AI overviews) -->
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
 </BaseLayout>
