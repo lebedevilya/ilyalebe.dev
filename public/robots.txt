@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ilyalebe.dev/sitemap.xml
+Sitemap: https://ilyalebe.dev/sitemap-index.xml
