@@ -19,6 +19,8 @@
 
 ## Profiles and contact
 
+- [Contact](https://ilyalebe.dev/contact): How to reach Ilya. Primary CTA is a 30-minute Calendly booking; other channels are LinkedIn DM, Telegram, and GitHub.
+- [Book a call](https://calendly.com/ilya0lebedev/30min): 30-minute Calendly slot for project work, hiring, or co-founder conversations.
 - [Homepage](https://ilyalebe.dev): Bio, project highlights, and links to everything else.
 - [GitHub](https://github.com/lebedevilya): Public code and profile README.
 - [LinkedIn](https://www.linkedin.com/in/ilya-lebedev-554225102/): Professional network.
