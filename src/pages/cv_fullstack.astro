@@ -1,12 +1,15 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import TimeLineElement from "../components/cv/TimeLine.astro";
+import DownloadPdfButton from "../components/cv/DownloadPdfButton.astro";
 
 const arbitrumGrantUrl = "https://arbitrum.questbook.app/dashboard/?grantId=67d7ff7f46da2f90cc3205e9&role=community&chainId=10&proposalId=68d6c5b2306fa3a0a647b6bb&isRenderingProposalBody=true";
 const techstarsWeb3Url = "https://www.techstars.com/newsroom/announcing-the-techstars-web3-class-of-2025";
 ---
 
 <BaseLayout title="Fullstack Resume | Ilya Lebedev" description="Senior Fullstack Engineer resume of Ilya Lebedev (Ruby on Rails, Hotwire, React). 8+ years shipping product end-to-end; ex-founder, Techstars Web3 '25." sideBarActiveItemID="cv" mainClass="cv-page">
+
+  <DownloadPdfButton />
 
   <!-- PERSONAL INFO -->
   <div class="mb-5">
@@ -38,9 +41,9 @@ const techstarsWeb3Url = "https://www.techstars.com/newsroom/announcing-the-tech
   </div>
 
   <div class="mb-10 text-justify">
-    Senior fullstack/product engineer with 8+ years of experience shipping Rails apps end-to-end.
-    Ex-founder (<a href={techstarsWeb3Url}>Techstars Web3 '25</a>): built and scaled an infrastructure-heavy platform to 18,000+ users and 25,000+ deployed nodes, secured an <a href={arbitrumGrantUrl}>Arbitrum ecosystem grant</a>, and implemented Node NFT smart contracts and marketplace.
-    Strong focus on Ruby on Rails, fast product execution and shipping business features without overcomplicating the stack.
+    Senior fullstack/product engineer with 8+ years shipping SaaS products end-to-end.
+    Ex-founder (<a href={techstarsWeb3Url}>Techstars Web3 '25</a>): built and scaled an infrastructure-heavy platform to 18,000+ users and 25,000+ deployed nodes.
+    Fluent across Ruby, Python and JavaScript end-to-end (UI through APIs and infrastructure); ship features without overcomplicating the stack. Hands-on with LLM orchestration, RAG and AI coding tools; happy to pick up any tech stack.
   </div>
 
   <!-- EXPERIENCE -->
@@ -112,6 +115,7 @@ const techstarsWeb3Url = "https://www.techstars.com/newsroom/announcing-the-tech
       </span>
     </TimeLineElement>
 
+    <div class="print-hide">
     <TimeLineElement
       title="Internships & Early Career"
       subtitle="2017 – 2019"
@@ -128,6 +132,7 @@ const techstarsWeb3Url = "https://www.techstars.com/newsroom/announcing-the-tech
         </li>
       </ul>
     </TimeLineElement>
+    </div>
   </div>
 
   <!-- EDUCATION -->

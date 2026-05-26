@@ -1,12 +1,15 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import TimeLineElement from "../components/cv/TimeLine.astro";
+import DownloadPdfButton from "../components/cv/DownloadPdfButton.astro";
 
 const arbitrumGrantUrl = "https://arbitrum.questbook.app/dashboard/?grantId=67d7ff7f46da2f90cc3205e9&role=community&chainId=10&proposalId=68d6c5b2306fa3a0a647b6bb&isRenderingProposalBody=true";
 const techstarsWeb3Url = "https://www.techstars.com/newsroom/announcing-the-techstars-web3-class-of-2025";
 ---
 
 <BaseLayout title="Backend Resume | Ilya Lebedev" description="Senior Backend Engineer resume of Ilya Lebedev. Ruby on Rails depth, distributed systems, async pipelines, Web3 infrastructure. Ex-founder, Techstars Web3 '25." sideBarActiveItemID="cv" mainClass="cv-page">
+
+  <DownloadPdfButton />
 
   <!-- PERSONAL INFO -->
   <div class="mb-5">
@@ -38,10 +41,7 @@ const techstarsWeb3Url = "https://www.techstars.com/newsroom/announcing-the-tech
   </div>
 
   <div class="mb-10 text-justify">
-    Senior backend engineer with 8+ years of experience building & scaling Ruby on Rails applications.
-    Ex-founder (<a href={techstarsWeb3Url}>Techstars Web3 '25</a>): built and scaled an infrastructure-heavy platform to 18,000+ users and 25,000+ deployed nodes, secured an <a href={arbitrumGrantUrl}>Arbitrum ecosystem grant</a>, and implemented Node NFT smart contracts and marketplace.
-    Strong experience with PostgreSQL, background processing, integrations and performance optimization.
-    Experienced in owning backend systems end-to-end, from architecture and data modeling to deployment, monitoring and scaling.
+    Senior backend engineer with 8+ years building and scaling production SaaS applications. Ex-founder (<a href={techstarsWeb3Url}>Techstars Web3 '25</a>): built and scaled an infrastructure-heavy platform to 18,000+ users and 25,000+ deployed nodes. Comfortable owning backend systems end-to-end: architecture, PostgreSQL data modeling, background processing, integrations, performance, deployment, and monitoring. Hands-on with LLM orchestration, RAG and AI coding tools; happy to pick up Go or any other stack the role needs.
   </div>
 
   <!-- EXPERIENCE -->
@@ -115,6 +115,7 @@ const techstarsWeb3Url = "https://www.techstars.com/newsroom/announcing-the-tech
       </span>
     </TimeLineElement>
 
+    <div class="print-hide">
     <TimeLineElement
       title="Internships & Early Career"
       subtitle="2017 – 2019"
@@ -131,6 +132,7 @@ const techstarsWeb3Url = "https://www.techstars.com/newsroom/announcing-the-tech
         </li>
       </ul>
     </TimeLineElement>
+    </div>
   </div>
 
   <!-- EDUCATION -->

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import TimeLineElement from "../components/cv/TimeLine.astro";
+import DownloadPdfButton from "../components/cv/DownloadPdfButton.astro";
 
 const arbitrumGrantUrl = "https://arbitrum.questbook.app/dashboard/?grantId=67d7ff7f46da2f90cc3205e9&role=community&chainId=10&proposalId=68d6c5b2306fa3a0a647b6bb&isRenderingProposalBody=true";
 const techstarsWeb3Url = "https://www.techstars.com/newsroom/announcing-the-techstars-web3-class-of-2025";
@@ -82,6 +83,8 @@ const faqSchema = {
 
 <BaseLayout title="Resume | Ilya Lebedev" description="Resume of Ilya Lebedev: Senior fullstack/product engineer, ex-founder (Techstars Web3 '25). Full timeline of experience, education, programs, and selected projects." sideBarActiveItemID="cv" mainClass="cv-page">
 
+  <DownloadPdfButton />
+
   <!-- PERSONAL INFO -->
   <div class="mb-5">
     <h1 class="text-3xl font-bold">Senior Backend Engineer</h1>
@@ -112,10 +115,7 @@ const faqSchema = {
   </div>
 
   <div class="mb-10 text-justify">
-    Senior Backend Engineer with 8+ years of experience building scalable systems and distributed infrastructure.
-    Ex-founder (<a href={techstarsWeb3Url}>Techstars Web3 '25</a>). Built and scaled infrastructure-heavy platform to 18,000+ users and 25,000+ deployed nodes.
-    Secured an <a href={arbitrumGrantUrl}>Arbitrum ecosystem grant</a> and implemented Node NFT smart contracts and marketplace.
-    Backend engineer with a Ruby/Rails background and production experience across Python, JavaScript, APIs, background jobs, data pipelines, integrations, and infrastructure-heavy systems. Comfortable ramping into new stacks quickly and owning architecture, delivery, and production operations.
+    Senior backend engineer with 8+ years building and scaling production SaaS systems and distributed infrastructure. Ex-founder (<a href={techstarsWeb3Url}>Techstars Web3 '25</a>): built and scaled an infrastructure-heavy platform to 18,000+ users and 25,000+ deployed nodes. Fluent across Ruby, Python and JavaScript on APIs (REST/GraphQL), background workers, data pipelines and integrations. Hands-on with LLM orchestration, RAG and AI coding tools; happy to pick up any tech stack.
   </div>
 
   <!-- EXPERIENCE -->
@@ -189,6 +189,7 @@ const faqSchema = {
       </span>
     </TimeLineElement>
 
+    <div class="print-hide">
     <TimeLineElement
       title="Internships & Early Career"
       subtitle="2017 – 2019"
@@ -205,6 +206,7 @@ const faqSchema = {
         </li>
       </ul>
     </TimeLineElement>
+    </div>
   </div>
 
   <!-- EDUCATION -->

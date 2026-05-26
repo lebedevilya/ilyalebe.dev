@@ -1,12 +1,15 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import TimeLineElement from "../components/cv/TimeLine.astro";
+import DownloadPdfButton from "../components/cv/DownloadPdfButton.astro";
 
 const arbitrumGrantUrl = "https://arbitrum.questbook.app/dashboard/?grantId=67d7ff7f46da2f90cc3205e9&role=community&chainId=10&proposalId=68d6c5b2306fa3a0a647b6bb&isRenderingProposalBody=true";
 const techstarsWeb3Url = "https://www.techstars.com/newsroom/announcing-the-techstars-web3-class-of-2025";
 ---
 
 <BaseLayout title="PM Resume | Ilya Lebedev" description="Product/PM angle on Ilya Lebedev's career: founder track record, cross-functional delivery, workflow-heavy product execution. Techstars Web3 '25." sideBarActiveItemID="cv" mainClass="cv-page">
+
+  <DownloadPdfButton />
 
   <!-- PERSONAL INFO -->
   <div class="mb-5">
@@ -39,8 +42,8 @@ const techstarsWeb3Url = "https://www.techstars.com/newsroom/announcing-the-tech
 
   <div class="mb-10 text-justify">
     Technical product operator with 8+ years of experience building and running infrastructure-heavy software products.
-    Ex-founder (<a href={techstarsWeb3Url}>Techstars Web3 '25</a>): built and scaled a Web3/AI platform to 18,000+ users and 25,000+ deployed nodes, secured an <a href={arbitrumGrantUrl}>Arbitrum ecosystem grant</a>, and owned product direction, prioritization, execution, and operational reliability across product, engineering, and support.
-    Interested in product roles that require technical fluency, systems thinking and strong execution in infrastructure-heavy, workflow-heavy and operations-sensitive domains.
+    Ex-founder (<a href={techstarsWeb3Url}>Techstars Web3 '25</a>): built and scaled a Web3/AI platform to 18,000+ users and 25,000+ deployed nodes, and owned product direction, prioritization, execution, and operational reliability across product, engineering, and support.
+    Hands-on with LLM orchestration, RAG and AI tooling; fluent in the engineering language across Ruby, Python and JavaScript. Looking for product roles that need technical fluency, systems thinking and strong execution in infrastructure-heavy, workflow-heavy and operations-sensitive domains.
   </div>
 
   <!-- EXPERIENCE -->
@@ -110,6 +113,7 @@ const techstarsWeb3Url = "https://www.techstars.com/newsroom/announcing-the-tech
       </span>
     </TimeLineElement>
 
+    <div class="print-hide">
     <TimeLineElement
       title="Internships & Early Career"
       subtitle="2017 – 2019"
@@ -126,6 +130,7 @@ const techstarsWeb3Url = "https://www.techstars.com/newsroom/announcing-the-tech
         </li>
       </ul>
     </TimeLineElement>
+    </div>
   </div>
 
   <!-- EDUCATION -->
