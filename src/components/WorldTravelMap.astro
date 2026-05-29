@@ -3,6 +3,7 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import { currentCountryCode, visitedCountries } from "../data/travel";
 import world from "world-atlas/countries-50m.json";
 import { feature } from "topojson-client";
+import type { GeometryCollection, Topology } from "topojson-specification";
 
 const countryIdsByCode: Record<string, string> = {
   AE: "784",
@@ -55,7 +56,8 @@ const plottedCitiesCount = countries.reduce((count, country) => {
   return count + country.cities.filter((city) => city.lat !== undefined && city.lng !== undefined).length;
 }, 0);
 const visitedCountryIds = new Set(countries.map((country) => country.countryId));
-const countryFeatures = feature(world, world.objects.countries).features.map((country) => ({
+const worldTopology = world as unknown as Topology<{ countries: GeometryCollection }>;
+const countryFeatures = feature(worldTopology, worldTopology.objects.countries).features.map((country) => ({
   ...country,
   id: String(country.id).padStart(3, "0"),
   properties: {
@@ -134,11 +136,11 @@ const travelMapData = JSON.stringify({
   </aside>
 </section>
 
-<script id="travel-map-data" type="application/json" set:html={travelMapData}></script>
+<script is:inline id="travel-map-data" type="application/json" set:html={travelMapData}></script>
 
 <script>
   import maplibregl from "maplibre-gl";
-  import { geoMercator, geoPath } from "d3-geo";
+  import { geoMercator, geoPath, type GeoPermissibleObjects } from "d3-geo";
 
   interface TravelCity {
     name: string;
@@ -299,7 +301,8 @@ const travelMapData = JSON.stringify({
       countryOverlay.replaceChildren(
         ...countriesGeoJSON.features.map((feature) => {
           const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-          path.setAttribute("d", pathGenerator(feature));
+          const d = pathGenerator(feature as unknown as GeoPermissibleObjects);
+          if (d) path.setAttribute("d", d);
           path.setAttribute(
             "class",
             [

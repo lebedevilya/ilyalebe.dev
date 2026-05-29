@@ -1,84 +1,81 @@
 ---
-const { title, img, desc, url, badge, badgeClass = "badge-secondary", tags, target = "_blank", role } = Astro.props;
-import { Image } from "astro:assets";
-const tag_url = url.split("/").slice(0, -1).join("/") + "/tag";
+import type { Project } from "../data/projects";
+
+type Props = Project;
+
+const {
+  title,
+  img,
+  tagline,
+  longDesc,
+  stack,
+  role,
+  badge,
+  badgeClass = "badge-secondary",
+  links = [],
+} = Astro.props;
+
 const isDiscontinued = badge === "DISCONTINUED";
 ---
 
-<div
-  class={`rounded-lg bg-base-100 transition ease-in-out ${isDiscontinued ? "opacity-70" : "hover:shadow-xl hover:scale-[102%]"}`}
+<details
+  class:list={[
+    "group rounded-lg bg-base-100",
+    isDiscontinued ? "opacity-70" : "transition ease-in-out hover:shadow-xl",
+  ]}
 >
-  {
-    isDiscontinued ? (
-      <div class="hero-content flex-col md:flex-row">
-        {
-          img && (
-            <Image
-              src={img}
-              width={750}
-              height={422}
-              format="webp"
-              alt={title}
-              class="max-w-full md:max-w-[13rem] rounded-lg"
-            />
-          )
-        }
-        <div class="grow w-full">
-          <h1 class="text-xl font-bold">
-            {title}
-            {badge && <div class={`badge ${badgeClass} mx-2`}>{badge}</div>}
-          </h1>
-          <p class="py-1 text-1xl">{desc}</p>
-          {role && <p class="py-1">{role}</p>}
-          <div class="card-actions justify-end">
-            {
-              tags &&
-                tags.map((tag) => (
-                  <a href={`${tag_url}/${tag}`} class="badge badge-outline">
-                    {tag}
-                  </a>
-                ))
-            }
-          </div>
+  <summary
+    class="hero-content flex-col gap-4 md:flex-row cursor-pointer list-none [&::-webkit-details-marker]:hidden"
+  >
+    {
+      img && (
+        <img
+          src={img}
+          width="750"
+          height="422"
+          loading="lazy"
+          decoding="async"
+          alt={title}
+          class="max-w-full md:max-w-[13rem] rounded-lg"
+        />
+      )
+    }
+    <div class="grow w-full">
+      <h1 class="text-xl font-bold">
+        {title}
+        {badge && <div class={`badge ${badgeClass} mx-2`}>{badge}</div>}
+      </h1>
+      <p class="py-1">{tagline}</p>
+      {role && <p class="py-1 text-sm font-light">{role}</p>}
+    </div>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="size-5 shrink-0 self-center opacity-60 transition-transform duration-200 group-open:rotate-180"
+      aria-hidden="true"
+    >
+      <polyline points="6 9 12 15 18 9" />
+    </svg>
+  </summary>
+
+  <div class="px-6 pb-5 md:px-8">
+    <p class="leading-relaxed">{longDesc}</p>
+    {stack && <p class="mt-2 text-sm font-light">Stack: {stack}</p>}
+    {
+      links.length > 0 && (
+        <div class="mt-3 flex flex-wrap gap-2">
+          {links.map((link) => (
+            <a href={link.url} target="_blank" rel="noopener noreferrer" class="btn btn-sm">
+              {link.label}
+            </a>
+          ))}
         </div>
-      </div>
-    ) : (
-      <>
-        <a href={url} target={target} rel="noopener noreferrer">
-          <div class="hero-content flex-col md:flex-row">
-            {
-              img && (
-                <Image
-                  src={img}
-                  width={750}
-                  height={422}
-                  format="webp"
-                  alt={title}
-                  class="max-w-full md:max-w-[13rem] rounded-lg"
-                />
-              )
-            }
-            <div class="grow w-full">
-              <h1 class="text-xl font-bold">
-                {title}
-                {badge && <div class={`badge ${badgeClass} mx-2`}>{badge}</div>}
-              </h1>
-              <p class="py-1 text-1xl">{desc}</p>
-              {role && <p class="py-1">{role}</p>}
-            </div>
-          </div>
-        </a>
-        <div class="card-actions justify-end px-4 pb-4 md:px-0 md:pb-0">
-          {
-            tags &&
-              tags.map((tag) => (
-                <a href={`${tag_url}/${tag}`} class="badge badge-outline">
-                  {tag}
-                </a>
-              ))
-          }
-        </div>
-      </>
-    )
-  }
-</div>
+      )
+    }
+  </div>
+</details>
