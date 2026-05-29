@@ -295,6 +295,6 @@ const faqSchema = {
   </ul>
 
   <!-- FAQ structured data (invisible to humans; consumed by Perplexity, ChatGPT search, Google AI overviews) -->
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
 </BaseLayout>

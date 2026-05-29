@@ -21,6 +21,8 @@ jobs:
           node-version: '22'
           cache: 'npm'
       - run: npm ci
+      - name: Unit + component tests
+        run: npm run test
       - name: Astro check (types + lint)
         run: npx astro check
       - name: Build
