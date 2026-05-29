@@ -1,6 +1,6 @@
 # Ilya Lebedev
 
-> Senior fullstack/product engineer with 8+ years shipping Ruby on Rails apps end-to-end. Ex-founder (Techstars Web3 '25): built and scaled an infra-heavy platform to 18k+ users and 25k+ deployed nodes; secured an Arbitrum ecosystem grant; shipped Node NFT smart contracts and a marketplace. Currently working with LLM orchestration, RAG pipelines, and Web3 infrastructure. Remote (US/EU time zones), B2B contract; open to senior fullstack contract work and technical co-founder conversations.
+> Senior software engineer with 8+ years building and scaling production SaaS systems end-to-end. Ex-founder (Techstars Web3 '25): built and scaled an infrastructure-heavy platform to 18k+ users and 25k+ deployed nodes. Fluent across Ruby, Python and JavaScript on APIs, background workers, data pipelines and integrations; hands-on with LLM orchestration, RAG pipelines and AI coding tools, and happy to pick up any stack. Remote (US/EU time zones), B2B contract; open to senior fullstack contract work and technical co-founder conversations.
 
 ## CV variants
 

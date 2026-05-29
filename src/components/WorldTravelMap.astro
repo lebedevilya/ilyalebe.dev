@@ -35,6 +35,14 @@ const countryIdsByCode: Record<string, string> = {
   VN: "704",
 };
 
+// Build-time guard: every visited country needs a numeric ISO id here or it
+// silently drops off the overlay. Fail the build loudly instead of shipping
+// a half-rendered map.
+const missingCountryIds = visitedCountries.filter((country) => !countryIdsByCode[country.code]).map((country) => country.code);
+if (missingCountryIds.length) {
+  throw new Error(`WorldTravelMap: missing countryIdsByCode entries for: ${missingCountryIds.join(", ")}`);
+}
+
 const countries = visitedCountries.map((country) => ({
   ...country,
   countryId: countryIdsByCode[country.code],

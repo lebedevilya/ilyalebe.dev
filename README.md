@@ -5,7 +5,7 @@ Source for [ilyalebe.dev](https://ilyalebe.dev), the personal website of Ilya Le
 ## Stack
 
 - [Astro 5](https://astro.build) (static site generation, View Transitions)
-- [Tailwind CSS](https://tailwindcss.com) + [DaisyUI](https://daisyui.com) v4
+- [Tailwind CSS](https://tailwindcss.com) + [DaisyUI](https://daisyui.com) v5
 - [MapLibre GL](https://maplibre.org) + [d3-geo](https://github.com/d3/d3-geo) for the travel page
 - TypeScript
 
