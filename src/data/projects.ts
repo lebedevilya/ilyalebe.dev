@@ -26,7 +26,10 @@ export const projects: Project[] = [
     role: "Creator",
     badge: "LIVE",
     badgeClass: "badge-success",
-    links: [{ label: "Visit site", url: "https://supportos.ilyalebe.dev" }],
+    links: [
+      { label: "Visit site", url: "https://supportos.ilyalebe.dev" },
+      { label: "GitHub", url: "https://github.com/lebedevilya/support_os" },
+    ],
   },
   {
     title: "slack-llm-bot",
@@ -53,6 +56,14 @@ export const projects: Project[] = [
     links: [
       { label: "Visit site", url: "https://nodes.garden" },
       { label: "Backdrop", url: "https://backdropbuild.com/builds/nodesgarden" },
+      {
+        label: "Techstars",
+        url: "https://www.techstars.com/newsroom/announcing-the-techstars-web3-class-of-2025",
+      },
+      {
+        label: "Arbitrum grant",
+        url: "https://arbitrum.questbook.app/dashboard/?grantId=67d7ff7f46da2f90cc3205e9&role=community&chainId=10&proposalId=68d6c5b2306fa3a0a647b6bb&isRenderingProposalBody=true",
+      },
     ],
   },
   {
@@ -75,6 +86,6 @@ export const projects: Project[] = [
     role: "Co-Founder",
     badge: "DISCONTINUED",
     badgeClass: "badge-error",
-    links: [{ label: "Visit site", url: "https://souper.cafe/" }],
+    links: [],
   },
 ];

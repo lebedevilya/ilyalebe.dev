@@ -20,12 +20,12 @@ const isDiscontinued = badge === "DISCONTINUED";
 
 <details
   class:list={[
-    "group rounded-lg bg-base-100",
-    isDiscontinued ? "opacity-70" : "transition ease-in-out hover:shadow-xl",
+    "group rounded-lg bg-base-100 transition-shadow duration-300 ease-out",
+    isDiscontinued ? "opacity-70" : "hover:shadow-lg",
   ]}
 >
   <summary
-    class="hero-content flex-col gap-4 md:flex-row cursor-pointer list-none [&::-webkit-details-marker]:hidden"
+    class="hero-content flex-col gap-4 md:flex-row cursor-pointer list-none rounded-lg transition-colors duration-200 hover:bg-base-200/50 [&::-webkit-details-marker]:hidden"
   >
     {
       img && (
@@ -79,3 +79,24 @@ const isDiscontinued = badge === "DISCONTINUED";
     }
   </div>
 </details>
+
+<style>
+  /* Smooth height + chevron when opening/closing. Uses the modern
+     ::details-content pseudo-element (Chromium 129+); browsers without it
+     simply snap open, which is an acceptable fallback. */
+  details {
+    interpolate-size: allow-keywords;
+  }
+
+  details::details-content {
+    block-size: 0;
+    overflow: hidden;
+    transition:
+      block-size 0.28s ease,
+      content-visibility 0.28s ease allow-discrete;
+  }
+
+  details[open]::details-content {
+    block-size: auto;
+  }
+</style>

@@ -19,8 +19,7 @@ describe("projects data", () => {
         expect(project.img.startsWith("/")).toBe(true);
       });
 
-      it("has at least one link, each with a label and an http(s) url", () => {
-        expect(project.links.length).toBeGreaterThan(0);
+      it("gives every link a label and an http(s) url", () => {
         for (const link of project.links) {
           expect(link.label?.trim()).toBeTruthy();
           expect(link.url).toMatch(/^https?:\/\//);
