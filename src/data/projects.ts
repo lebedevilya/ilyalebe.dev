@@ -82,7 +82,9 @@ export const projects: Project[] = [
     title: "souper.cafe",
     img: "/souper.webp",
     tagline: "Kitchen & Tiki bar in Tbilisi, Georgia",
-    longDesc: "Kitchen and tiki bar in Tbilisi, Georgia. Discontinued.",
+    longDesc:
+      "Kitchen and tiki bar in Tbilisi, Georgia. More than a website: a custom Rails admin panel with dynamic menus ran the operation. Discontinued.",
+    stack: "Ruby on Rails, PostgreSQL",
     role: "Co-Founder",
     badge: "DISCONTINUED",
     badgeClass: "badge-error",
