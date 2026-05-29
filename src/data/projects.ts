@@ -22,7 +22,7 @@ export const projects: Project[] = [
     tagline: "Agentic support for startup portfolios",
     longDesc:
       "Agentic customer-support system for startup portfolios. Rails plus Hotwire, deployed with Kamal.",
-    stack: "Ruby on Rails, Hotwire, SQLite, RubyLLM, Kamal",
+    stack: "Ruby on Rails, Hotwire, SQLite, RubyLLM, OpenAI API, Kamal",
     role: "Creator",
     badge: "LIVE",
     badgeClass: "badge-success",
@@ -37,7 +37,7 @@ export const projects: Project[] = [
     tagline: "Production-shaped Slack bot on Vercel",
     longDesc:
       "Production-shaped Slack bot on Vercel. OpenAI tool-loop, threaded memory via the Slack API, optional pgvector recall, and an offline eval harness (deterministic oracle plus LLM judge) so the LLM behaviour is tested like real software.",
-    stack: "TypeScript, Vercel, OpenAI, pgvector",
+    stack: "TypeScript, Vercel, OpenAI, RAG, pgvector",
     role: "Creator",
     badge: "OSS",
     badgeClass: "badge-secondary",
@@ -49,7 +49,7 @@ export const projects: Project[] = [
     tagline: "Multichain Node-as-a-Service platform",
     longDesc:
       "Web3/AI Node-as-a-Service platform. Scaled to 18,000+ users and 25,000+ deployed nodes; secured an Arbitrum ecosystem grant and shipped Node NFT smart contracts and a marketplace. Techstars Web3 '25 cohort; Backdrop Build V4 to V6 finalist.",
-    stack: "Ruby on Rails, PostgreSQL, GoodJob, Solidity, Foundry, Docker, fly.io",
+    stack: "Ruby on Rails, PostgreSQL, GoodJob, Solidity, Foundry, Docker, GCP, fly.io",
     role: "Co-Founder",
     badge: "LIVE",
     badgeClass: "badge-success",
