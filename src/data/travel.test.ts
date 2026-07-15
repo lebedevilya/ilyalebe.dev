@@ -22,4 +22,31 @@ describe("travel data", () => {
       expect(Number.isFinite(country.lng)).toBe(true);
     }
   });
+
+  it("includes the 2026 Serbia and Montenegro trip", () => {
+    const serbia = visitedCountries.find((country) => country.code === "RS");
+    const montenegro = visitedCountries.find((country) => country.code === "ME");
+
+    expect(serbia?.note).toContain("25 June 2026 - 4 July 2026");
+    expect(serbia?.cities.map((city) => city.name)).toEqual(["Belgrade"]);
+    expect(montenegro?.note).toContain("5 July 2026 - 15 July 2026");
+    expect(montenegro?.cities.map((city) => city.name)).toEqual([
+      "Podgorica",
+      "Ulcinj",
+      "Bar",
+      "Petrovac",
+      "Sveti Stefan",
+      "Budva",
+      "Kotor",
+      "Tivat",
+      "Herceg Novi",
+    ]);
+  });
+
+  it("marks Almaty, Kazakhstan as the current location", () => {
+    const currentCountry = visitedCountries.find((country) => country.code === currentCountryCode);
+
+    expect(currentCountry?.code).toBe("KZ");
+    expect(currentCountry?.note).toContain("currently in Almaty");
+  });
 });

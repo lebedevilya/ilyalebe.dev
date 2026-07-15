@@ -207,7 +207,7 @@ export const visitedCountries: TravelCountry[] = [
   {
     code: "KZ",
     name: "Kazakhstan",
-    note: "2024, 2025, 2026 (Almaty, Astana, Karagandy, Shymkent, Turkistan)",
+    note: "2024, 2025, 2026 (currently in Almaty; Astana, Karagandy, Shymkent, Turkistan)",
     lat: 48.0196,
     lng: 66.9237,
     cities: [
@@ -313,6 +313,32 @@ export const visitedCountries: TravelCountry[] = [
     cities: [
       { name: "Siem Reap", lat: 13.3671, lng: 103.8448 },
       { name: "Phnom Penh", lat: 11.5564, lng: 104.9282 },
+    ],
+  },
+  {
+    code: "RS",
+    name: "Serbia",
+    note: "25 June 2026 - 4 July 2026 (Belgrade)",
+    lat: 44.7866,
+    lng: 20.4489,
+    cities: [{ name: "Belgrade", lat: 44.7866, lng: 20.4489 }],
+  },
+  {
+    code: "ME",
+    name: "Montenegro",
+    note: "5 July 2026 - 15 July 2026 (Podgorica, Ulcinj, Bar, Petrovac, Sveti Stefan, Budva, Kotor, Tivat, Herceg Novi)",
+    lat: 42.7087,
+    lng: 19.3744,
+    cities: [
+      { name: "Podgorica", lat: 42.4304, lng: 19.2594 },
+      { name: "Ulcinj", lat: 41.9297, lng: 19.2244 },
+      { name: "Bar", lat: 42.0931, lng: 19.1003 },
+      { name: "Petrovac", lat: 42.2058, lng: 18.9428 },
+      { name: "Sveti Stefan", lat: 42.2559, lng: 18.8961 },
+      { name: "Budva", lat: 42.2911, lng: 18.8403 },
+      { name: "Kotor", lat: 42.4247, lng: 18.7712 },
+      { name: "Tivat", lat: 42.434, lng: 18.6962 },
+      { name: "Herceg Novi", lat: 42.4572, lng: 18.5315 },
     ],
   },
 ];
