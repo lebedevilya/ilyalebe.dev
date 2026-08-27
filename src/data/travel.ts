@@ -207,13 +207,14 @@ export const visitedCountries: TravelCountry[] = [
   {
     code: "KZ",
     name: "Kazakhstan",
-    note: "2024, 2025, 2026 (currently in Almaty; Astana, Karagandy, Shymkent, Turkistan)",
+    note: "2024, 2025, 2026 (currently in Almaty; Astana, Karagandy, Petropavlovsk, Shymkent, Turkistan)",
     lat: 48.0196,
     lng: 66.9237,
     cities: [
       { name: "Almaty", lat: 43.2389, lng: 76.8897 },
       { name: "Astana", lat: 51.1694, lng: 71.4491 },
       { name: "Karagandy", lat: 49.8069, lng: 73.085 },
+      { name: "Petropavlovsk", lat: 54.8753, lng: 69.163 },
       { name: "Shymkent", lat: 42.3417, lng: 69.5901 },
       { name: "Turkistan", lat: 43.2973, lng: 68.2518 },
     ],

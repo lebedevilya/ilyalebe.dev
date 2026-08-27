@@ -48,5 +48,6 @@ describe("travel data", () => {
 
     expect(currentCountry?.code).toBe("KZ");
     expect(currentCountry?.note).toContain("currently in Almaty");
+    expect(currentCountry?.cities.map((city) => city.name)).toContain("Petropavlovsk");
   });
 });
