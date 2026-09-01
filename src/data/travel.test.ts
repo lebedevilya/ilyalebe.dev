@@ -43,11 +43,20 @@ describe("travel data", () => {
     ]);
   });
 
-  it("marks Almaty, Kazakhstan as the current location", () => {
+  it("marks Vietnam as the current location", () => {
     const currentCountry = visitedCountries.find((country) => country.code === currentCountryCode);
 
-    expect(currentCountry?.code).toBe("KZ");
-    expect(currentCountry?.note).toContain("currently in Almaty");
-    expect(currentCountry?.cities.map((city) => city.name)).toContain("Petropavlovsk");
+    expect(currentCountry?.code).toBe("VN");
+    expect(currentCountry?.name).toBe("Vietnam");
+    expect(currentCountry?.cities.map((city) => city.name)).toContain("Da Nang");
+  });
+
+  it("includes Armenia with visited cities including Sevan and Dilijan", () => {
+    const armenia = visitedCountries.find((country) => country.code === "AM");
+
+    expect(armenia?.cities.map((city) => city.name)).toContain("Sevan");
+    expect(armenia?.cities.map((city) => city.name)).toContain("Dilijan");
+    expect(armenia?.note).toContain("Sevan");
+    expect(armenia?.note).toContain("Dilijan");
   });
 });

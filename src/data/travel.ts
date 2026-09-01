@@ -13,7 +13,7 @@ export type TravelCountry = {
   cities: TravelCity[];
 };
 
-export const currentCountryCode = "KZ";
+export const currentCountryCode = "VN";
 
 export const visitedCountries: TravelCountry[] = [
   {
@@ -126,11 +126,11 @@ export const visitedCountries: TravelCountry[] = [
   {
     code: "AM",
     name: "Armenia",
-    note: "Jule, August 2023 (Yeravan, Vanadzor)",
+    note: "July, August 2023 (Yerevan, Vanadzor, Sevan, Dilijan, Tsovagyugh)",
     lat: 40.0691,
     lng: 45.0382,
     cities: [
-      { name: "Yeravan", lat: 40.1792, lng: 44.4991 },
+      { name: "Yerevan", lat: 40.1792, lng: 44.4991 },
       { name: "Vanadzor", lat: 40.8128, lng: 44.4883 },
       { name: "Dilijan", lat: 40.7408, lng: 44.8631 },
       { name: "Sevan", lat: 40.5483, lng: 44.9487 },
@@ -207,7 +207,7 @@ export const visitedCountries: TravelCountry[] = [
   {
     code: "KZ",
     name: "Kazakhstan",
-    note: "2024, 2025, 2026 (currently in Almaty; Astana, Karagandy, Petropavlovsk, Shymkent, Turkistan)",
+    note: "2024, 2025, 2026 (Almaty, Astana, Karagandy, Petropavlovsk, Shymkent, Turkistan)",
     lat: 48.0196,
     lng: 66.9237,
     cities: [
