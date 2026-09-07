@@ -9,7 +9,7 @@ describe("homepage", () => {
   });
 
   it("leads with recruiter-focused positioning and actions", () => {
-    expect(source).toContain("Senior Backend Engineer with fullstack range");
+    expect(source).toContain("Backend Engineer with fullstack range");
     expect(source).toContain("Open to senior backend and fullstack engineering roles");
     expect(source).toContain("Remote | CET timezone");
     expect(source).toContain("8+ years across Ruby on Rails, PostgreSQL, background processing, APIs, infrastructure, and AI integrations");
