@@ -95,7 +95,10 @@
   /* TimeLineElement: trim padding, suppress dot/line graphics. */
   .cv-page .time-line-container { gap: 4pt !important; }
   .cv-page .time-line-container > div { padding-bottom: 3pt !important; }
-  .cv-page ul { margin: 2pt 0 2pt 14pt !important; padding: 0 !important; }
+  .cv-page .education__time { display: none !important; }
+  .cv-page .experience__data { padding: 0 !important; }
+  .cv-page .experience__data > div { margin: 2pt 0 !important; }
+  .cv-page ul { margin: 2pt 0 2pt 14pt !important; padding: 0 !important; gap: 0 !important; }
   .cv-page li { margin-bottom: 1pt !important; }
 
   /* Keep section headings glued to the first content after them, but let
