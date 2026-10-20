@@ -64,6 +64,7 @@ jobs:
             --exclude '^https?://ilyalebe\.dev'
             --exclude '^https?://(www\.)?linkedin\.com'
             --exclude '^https?://astro\.build'
+            --exclude '^https?://(www\.)?xometry\.de'
             './dist/**/*.html'
             './dist/llms.txt'
           fail: true
