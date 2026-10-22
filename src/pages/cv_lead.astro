@@ -1,0 +1,168 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TimeLineElement from "../components/cv/TimeLine.astro";
+import DownloadPdfButton from "../components/cv/DownloadPdfButton.astro";
+
+const arbitrumGrantUrl = "https://arbitrum.questbook.app/dashboard/?grantId=67d7ff7f46da2f90cc3205e9&role=community&chainId=10&proposalId=68d6c5b2306fa3a0a647b6bb&isRenderingProposalBody=true";
+---
+
+<BaseLayout title="Backend Resume | Ilya Lebedev" description="Senior Backend Engineer resume of Ilya Lebedev. Ruby on Rails depth, distributed systems, async pipelines, technical leadership." sideBarActiveItemID="cv" mainClass="cv-page">
+
+  <DownloadPdfButton />
+
+  <!-- HEADER: name first so ATS parsers pick it up -->
+  <div class="mb-5">
+    <h1 class="text-3xl font-bold">Ilya Lebedev</h1>
+    <div class="text-xl font-semibold">Senior Backend Engineer</div>
+  </div>
+
+  <div class="mb-10">
+    Tbilisi, Georgia · Remote (US/EU time zones), B2B contract · Russian (Native), English (C2), Spanish (A1)<br>
+    <a href="mailto:ilya0lebedev@gmail.com">ilya0lebedev@gmail.com</a> ·
+    <a href="https://ilyalebe.dev">ilyalebe.dev</a> ·
+    <a href="https://www.linkedin.com/in/ilya-lebedev-554225102/">linkedin.com/in/ilya-lebedev-554225102</a> ·
+    <a href="https://github.com/lebedevilya">github.com/lebedevilya</a> ·
+    Telegram: @rubyminer
+  </div>
+
+  <!-- PROFILE -->
+  <div class="mb-5">
+    <h2 class="text-3xl font-bold">Profile</h2>
+  </div>
+
+  <div class="mb-10 text-justify">
+    Senior backend engineer with 8+ years building and scaling production SaaS applications. As technical lead, built and scaled an infrastructure-heavy platform to 18,000+ users and 25,000+ deployed nodes. Comfortable owning backend systems end-to-end: architecture, PostgreSQL data modeling, background processing, integrations, performance, deployment, and monitoring. Hands-on with LLM orchestration, RAG and AI coding tools. Strongest in Ruby, fluent in Python / JavaScript, quick to pick up any new stack.
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="mb-5">
+    <h2 class="text-3xl font-bold">Experience</h2>
+  </div>
+
+  <div class="time-line-container mb-5">
+    <!-- ORANGESOFT -->
+    <TimeLineElement
+      title="Backend Ruby Engineer (Contract)"
+      subtitle="Feb 2026 – Jun 2026 — Orangesoft (remote)"
+    >
+      Fixed-term contract for a US healthcare client (under NDA).
+      <ul class="list-disc mx-6 mb-2 grid gap-2">
+        <li>Designed and implemented robust integrations with Electronic Health Record (EHR) systems ensuring secure and reliable health data flows.</li>
+        <li>Architected and built backend services for real-time chats and asynchronous messaging workflows.</li>
+        <li>Built administrative tooling, automated data exports, and background data processing pipelines.</li>
+      </ul>
+      <span class="text-sm font-light">
+        Tech: Ruby on Rails, PostgreSQL, Sidekiq, Redis, REST APIs, RSpec, Docker
+      </span>
+    </TimeLineElement>
+
+    <!-- NODES.GARDEN -->
+    <TimeLineElement
+      title="Technical Lead"
+      subtitle="Mar 2025 – Feb 2026 — nodes.garden (remote)"
+    >
+      <ul class="list-disc mx-6 mb-2 grid gap-2">
+        <li>Led the Ruby on Rails / PostgreSQL backend of a Web3/AI platform: architecture, domain modeling, failure handling and data consistency.</li>
+        <li>Scaled the platform from 0 to 18,000+ users and $350k yearly revenue.</li>
+        <li>Built APIs, async jobs and internal tooling for managing large-scale infrastructure. 25,000+ nodes deployed in a year.</li>
+        <li>Secured an <a href={arbitrumGrantUrl}>Arbitrum ecosystem grant</a> and implemented Node NFT smart contracts and marketplace.</li>
+        <li>Built browser automation and data collection workflows with proxy handling, retries and failure recovery.</li>
+        <li>Led a distributed team of 10 people including engineers, customer support and operations.</li>
+      </ul>
+      <span class="text-sm font-light">
+        Tech: Ruby on Rails, PostgreSQL, RSpec, GoodJob, Hotwire, TailwindCSS, Solidity, Foundry, OpenZeppelin, ethers.js, MetaMask, JSON-RPC, Arbitrum, Docker, fly.io
+      </span>
+    </TimeLineElement>
+
+    <!-- REINVENTED HOSPITALITY -->
+    <TimeLineElement
+      title="Backend Ruby Engineer"
+      subtitle="Aug 2024 – Mar 2025 — Reinvented Hospitality (remote)"
+    >
+      <ul class="list-disc mx-6 mb-2 grid gap-2">
+        <li>Built the backend for a full-cycle POS system in Ruby on Rails with a strong focus on operational reliability.</li>
+        <li>Designed and delivered domain logic for restaurant and hotel workflows, including reporting and exports.</li>
+        <li>Delivered background jobs and data flows that supported daily business operations.</li>
+      </ul>
+      <span class="text-sm font-light">
+        Tech: Ruby on Rails, PostgreSQL, Sidekiq, Hotwire, MiniTest, TailwindCSS, ViewComponent, AWS, Docker
+      </span>
+    </TimeLineElement>
+
+    <!-- XOMETRY -->
+    <TimeLineElement
+      title="Backend Ruby Engineer"
+      subtitle="Aug 2022 – Aug 2024 — Xometry (remote)"
+    >
+      <ul class="list-disc mx-6 mb-2 grid gap-2">
+        <li>Helped scale backend architecture for a global manufacturing marketplace supporting transactions across hundreds of thousands of buyers and suppliers.</li>
+        <li>Implemented and launched UK and TR regional apps under tight deadlines.</li>
+        <li>Built an AI-powered HS codes search tool that cut code search time for the logistics team by 90%+.</li>
+        <li>Designed and implemented async intercompany communication systems with background processing and data consistency.</li>
+        <li>Fully owned and managed Salesforce integrations and data pipelines.</li>
+        <li>Built foundational domain systems for HS codes, manufacturing attributes, and pricing logic.</li>
+      </ul>
+      <span class="text-sm font-light">
+        Tech: Ruby on Rails, React, RSpec, PostgreSQL, Sidekiq, GraphQL, RabbitMQ, Redis, Python, Airflow
+      </span>
+    </TimeLineElement>
+
+    <!-- EARLIER EXPERIENCE -->
+    <TimeLineElement
+      title="Backend Ruby Engineer"
+      subtitle="2019 – 2021 — Sputnik8, Igooods, Rubyroid Labs (remote)"
+    >
+      Backend development across e-commerce, travel, insurance and internal tooling products, with ownership of integrations, data flows, and production support.
+      <br>
+      <span class="text-sm font-light">
+        Tech: Ruby on Rails, React, VueJS, RSpec, PostgreSQL, Sidekiq, GraphQL, REST APIs, Heroku, AWS
+      </span>
+    </TimeLineElement>
+
+    <TimeLineElement
+      title="Internships & Early Career"
+      subtitle="2017 – 2019"
+    >
+      <ul class="list-disc mx-6 mb-2 grid gap-2">
+        <li>
+          Yandex: Web Developer Intern. Python, React, GraphQL.
+        </li>
+        <li>
+          Joint Institute for Nuclear Research: C++/CUDA Developer Intern.
+        </li>
+        <li>
+          WorldQuant: Quantitative Research Consultant.
+        </li>
+      </ul>
+    </TimeLineElement>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="mb-5">
+    <h2 class="text-3xl font-bold">Core Skills</h2>
+  </div>
+
+  <ul class="list-disc md:columns-3 columns-2 mx-6 mb-10">
+    <li><b>Languages:</b> Ruby, JavaScript, TypeScript, Python</li>
+    <li><b>Backend:</b> Ruby on Rails, ActiveRecord, REST/GraphQL APIs, distributed systems, domain modeling</li>
+    <li><b>Web3:</b> Solidity, ERC-721, Foundry, OpenZeppelin, ethers.js, JSON-RPC</li>
+    <li><b>Databases:</b> PostgreSQL, Redis</li>
+    <li><b>Async:</b> Sidekiq, GoodJob, SolidQueue, RabbitMQ</li>
+    <li><b>Infra:</b> Docker, CI/CD, AWS, GCP, fly.io, Heroku, Kamal</li>
+    <li><b>Observability:</b> Datadog, Sentry, Appsignal</li>
+    <li><b>Integrations:</b> Salesforce, Stripe, PayPal, CloudPayments, Copperx, LLM integrations</li>
+    <li><b>Automation:</b> Browser automation, web scraping</li>
+    <li><b>Frontend:</b> Hotwire, React, ViewComponent, TailwindCSS</li>
+  </ul>
+
+  <!-- EDUCATION -->
+  <div class="mb-5">
+    <h2 class="text-3xl font-bold">Education</h2>
+  </div>
+
+  <ul class="list-disc mx-6 mb-10 grid gap-2">
+    <li><b>M.Sc. Applied Mathematics and Computer Science</b>, Saint Petersburg State University, 2017–2019</li>
+    <li><b>B.Sc. Applied Mathematics and Computer Science</b>, Saint Petersburg State University, 2013–2017</li>
+  </ul>
+
+</BaseLayout>
