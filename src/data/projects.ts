@@ -55,7 +55,6 @@ export const projects: Project[] = [
     badgeClass: "badge-success",
     links: [
       { label: "Visit site", url: "https://nodes.garden" },
-      { label: "Backdrop", url: "https://backdropbuild.com/builds/nodesgarden" },
       {
         label: "Techstars",
         url: "https://www.techstars.com/newsroom/announcing-the-techstars-web3-class-of-2025",
@@ -76,7 +75,7 @@ export const projects: Project[] = [
     role: "Creator",
     badge: "DISCONTINUED",
     badgeClass: "badge-error",
-    links: [{ label: "Backdrop", url: "https://backdropbuild.com/builds/v3/customscodes" }],
+    links: [],
   },
   {
     title: "souper.cafe",

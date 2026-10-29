@@ -13,8 +13,8 @@
 
 - [SupportOS](https://supportos.ilyalebe.dev/): Agentic customer support system prototype. Rails, SQLite, Rubyllm, Kamal.
 - [slack-llm-bot](https://github.com/lebedevilya/slack-llm-bot): Production-shaped Slack bot on Vercel. OpenAI tool-loop, threaded memory, optional Supabase pgvector long-term recall, and an offline eval harness with deterministic oracle + LLM judge. TypeScript, MIT-licensed.
-- [nodes.garden](https://backdropbuild.com/builds/nodesgarden): Web3/AI Node-as-a-Service platform. 25k+ deployed nodes, 18k+ users, Techstars Web3 '25 cohort. Rails, PostgreSQL, GoodJob, Docker, Fly.io.
-- [customs.codes](https://backdropbuild.com/builds/v3/customscodes): RAG-based AI search tool for customs codes. Backdrop Build V3 finalist. Discontinued. Rails, PostgreSQL.
+- [nodes.garden](https://nodes.garden): Web3/AI Node-as-a-Service platform. 25k+ deployed nodes, 18k+ users, Techstars Web3 '25 cohort. Rails, PostgreSQL, GoodJob, Docker, Fly.io.
+- customs.codes: RAG-based AI search tool for customs codes. Backdrop Build V3 finalist. Discontinued. Rails, PostgreSQL.
 - [xometry.de](https://xometry.de): Manufacturing marketplace. Built async intercompany systems and regional apps as an employed engineer. Rails, PostgreSQL, React, GraphQL, RabbitMQ.
 
 ## Profiles and contact
