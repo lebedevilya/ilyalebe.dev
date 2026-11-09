@@ -1,0 +1,182 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TimeLineElement from "../components/cv/TimeLine.astro";
+import DownloadPdfButton from "../components/cv/DownloadPdfButton.astro";
+
+const arbitrumGrantUrl = "https://arbitrum.questbook.app/dashboard/?grantId=67d7ff7f46da2f90cc3205e9&role=community&chainId=10&proposalId=68d6c5b2306fa3a0a647b6bb&isRenderingProposalBody=true";
+const techstarsWeb3Url = "https://www.techstars.com/newsroom/announcing-the-techstars-web3-class-of-2025";
+---
+
+<BaseLayout title="AI Engineering Lead Resume | Ilya Lebedev" description="Lead engineer for LLM agents and AI evaluation on Ruby on Rails and Python. Ex-founder (Techstars Web3 '25), led a team of 10." sideBarActiveItemID="cv" mainClass="cv-page">
+
+  <DownloadPdfButton />
+
+  <!-- HEADER: name first so ATS parsers pick it up -->
+  <div class="mb-5">
+    <h1 class="text-3xl font-bold">Ilya Lebedev</h1>
+    <div class="text-xl font-semibold">Lead Engineer, AI &amp; LLM Systems (Ruby on Rails, Python)</div>
+  </div>
+
+  <div class="mb-10">
+    Tbilisi, Georgia · Remote (US/EU time zones), B2B contract · Russian (Native), English (C2), Spanish (A1)<br>
+    <a href="mailto:ilya0lebedev@gmail.com">ilya0lebedev@gmail.com</a> ·
+    <a href="https://ilyalebe.dev">ilyalebe.dev</a> ·
+    <a href="https://www.linkedin.com/in/ilya-lebedev-554225102/">linkedin.com/in/ilya-lebedev-554225102</a> ·
+    <a href="https://github.com/lebedevilya">github.com/lebedevilya</a> ·
+    Telegram: @rubyminer
+  </div>
+
+  <!-- PROFILE -->
+  <div class="mb-5">
+    <h2 class="text-3xl font-bold">Profile</h2>
+  </div>
+
+  <div class="mb-10 text-justify">
+    Hands-on engineering lead with 8+ years shipping production software and LLM-powered features. Builds tool-using agents, RAG pipelines and the evaluation harnesses that prove they work: fixed regression suites, deterministic scoring plus LLM-as-judge, traces that show where an agent went wrong. Ex-founder (<a href={techstarsWeb3Url}>Techstars Web3 '25</a>): hired and led a distributed team of 10 and grew a platform to 18,000+ users and $350k yearly revenue while staying close to the code. Strongest in Ruby on Rails, fluent in Python and TypeScript; works with AI coding tools (Claude Code, Codex) daily.
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="mb-5">
+    <h2 class="text-3xl font-bold">AI Projects</h2>
+  </div>
+
+  <ul class="list-disc mx-6 mb-10 grid gap-2">
+    <li><b>slack-llm-bot</b> (TypeScript, OpenAI, Supabase pgvector): Slack agent with an OpenAI tool-calling loop, thread memory and long-term vector recall. Offline eval harness: a 12-question regression suite on a committed fixture, scored by a deterministic oracle plus an LLM judge, with per-question reports so score changes trace back to code. <a href="https://github.com/lebedevilya/slack-llm-bot">github.com/lebedevilya/slack-llm-bot</a></li>
+    <li><b>SupportOS</b> (Ruby on Rails, RubyLLM): multi-agent customer support. A triage agent routes each ticket to answer, specialist or human; a specialist agent calls tools and drafts replies; low-confidence cases escalate. Trace view makes every agent decision inspectable. <a href="https://supportos.ilyalebe.dev">supportos.ilyalebe.dev</a></li>
+    <li><b>customs.codes</b> (Ruby on Rails, RAG): RAG-based AI customs code classification tool, Backdrop Build V3 finalist. Built by hand before AI coding tools.</li>
+  </ul>
+
+  <!-- EXPERIENCE -->
+  <div class="mb-5">
+    <h2 class="text-3xl font-bold">Experience</h2>
+  </div>
+
+  <div class="time-line-container mb-5">
+    <!-- ORANGESOFT -->
+    <TimeLineElement
+      title="Backend Ruby Engineer (Contract)"
+      subtitle="Feb 2026 – Jun 2026 — Orangesoft (remote)"
+    >
+      Fixed-term contract for a US healthcare client (under NDA).
+      <ul class="list-disc mx-6 mb-2 grid gap-2">
+        <li>Designed and implemented robust integrations with Electronic Health Record (EHR) systems ensuring secure and reliable health data flows.</li>
+        <li>Architected and built backend services for real-time chats and asynchronous messaging workflows.</li>
+        <li>Built administrative tooling, automated data exports, and background data processing pipelines.</li>
+      </ul>
+      <span class="text-sm font-light">
+        Tech: Ruby on Rails, PostgreSQL, Sidekiq, Redis, REST APIs, RSpec, Docker
+      </span>
+    </TimeLineElement>
+
+    <!-- NODES.GARDEN -->
+    <TimeLineElement
+      title="Founder / Technical Lead"
+      subtitle="Mar 2025 – Feb 2026 — nodes.garden (remote)"
+    >
+      <ul class="list-disc mx-6 mb-2 grid gap-2">
+        <li>Built and led a distributed team of 10 (engineers, customer support, operations): ran all hiring and interviews, set priorities, planned and owned delivery.</li>
+        <li>Scaled the platform from 0 to 18,000+ users and $350k yearly revenue, owning product direction together with engineering.</li>
+        <li>Led architecture of the Ruby on Rails / PostgreSQL backend while staying hands-on: domain modeling, failure handling and data consistency.</li>
+        <li>Built APIs, async jobs and internal tooling for managing large-scale infrastructure. 25,000+ nodes deployed in a year.</li>
+        <li>Owned production reliability: monitoring, incident response and failure recovery for automated workflows with retries and proxy handling.</li>
+        <li>Secured an <a href={arbitrumGrantUrl}>Arbitrum ecosystem grant</a> and shipped Node NFT smart contracts and marketplace.</li>
+      </ul>
+      <span class="text-sm font-light">
+        Tech: Ruby on Rails, PostgreSQL, RSpec, GoodJob, Hotwire, TailwindCSS, Solidity, Foundry, OpenZeppelin, ethers.js, MetaMask, JSON-RPC, Arbitrum, Docker, fly.io
+      </span>
+    </TimeLineElement>
+
+    <!-- REINVENTED HOSPITALITY -->
+    <TimeLineElement
+      title="Backend Ruby Engineer"
+      subtitle="Aug 2024 – Mar 2025 — Reinvented Hospitality (remote)"
+    >
+      <ul class="list-disc mx-6 mb-2 grid gap-2">
+        <li>Built the backend for a full-cycle POS system in Ruby on Rails with a strong focus on operational reliability.</li>
+        <li>Designed and delivered domain logic for restaurant and hotel workflows, including reporting and exports.</li>
+        <li>Delivered background jobs and data flows that supported daily business operations.</li>
+      </ul>
+      <span class="text-sm font-light">
+        Tech: Ruby on Rails, PostgreSQL, Sidekiq, Hotwire, MiniTest, TailwindCSS, ViewComponent, AWS, Docker
+      </span>
+    </TimeLineElement>
+
+    <!-- XOMETRY -->
+    <TimeLineElement
+      title="Backend Ruby Engineer"
+      subtitle="Aug 2022 – Aug 2024 — Xometry (remote)"
+    >
+      <ul class="list-disc mx-6 mb-2 grid gap-2">
+        <li>Built an AI-powered HS code classification tool (LLM + retrieval) that cut code search time for the logistics team by 90%+.</li>
+        <li>Helped scale backend architecture for a global manufacturing marketplace supporting transactions across hundreds of thousands of buyers and suppliers.</li>
+        <li>Implemented and launched UK and TR regional apps under tight deadlines.</li>
+        <li>Designed and implemented async intercompany communication systems with background processing and data consistency.</li>
+        <li>Fully owned and managed Salesforce integrations and data pipelines.</li>
+        <li>Built foundational domain systems for HS codes, manufacturing attributes, and pricing logic.</li>
+      </ul>
+      <span class="text-sm font-light">
+        Tech: Ruby on Rails, React, RSpec, PostgreSQL, Sidekiq, GraphQL, RabbitMQ, Redis, Python, Airflow
+      </span>
+    </TimeLineElement>
+
+    <!-- EARLIER EXPERIENCE -->
+    <TimeLineElement
+      title="Backend Ruby Engineer"
+      subtitle="2019 – 2021 — Sputnik8, Igooods, Rubyroid Labs (remote)"
+    >
+      Backend development across e-commerce, travel, insurance and internal tooling products, with ownership of integrations, data flows, and production support.
+      <br>
+      <span class="text-sm font-light">
+        Tech: Ruby on Rails, React, VueJS, RSpec, PostgreSQL, Sidekiq, GraphQL, REST APIs, Heroku, AWS
+      </span>
+    </TimeLineElement>
+
+    <TimeLineElement
+      title="Internships & Early Career"
+      subtitle="2017 – 2019"
+    >
+      <ul class="list-disc mx-6 mb-2 grid gap-2">
+        <li>
+          Yandex: Web Developer Intern. Python, React, GraphQL.
+        </li>
+        <li>
+          Joint Institute for Nuclear Research: C++/CUDA Developer Intern.
+        </li>
+        <li>
+          WorldQuant: Quantitative Research Consultant.
+        </li>
+      </ul>
+    </TimeLineElement>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="mb-5">
+    <h2 class="text-3xl font-bold">Core Skills</h2>
+  </div>
+
+  <ul class="list-disc md:columns-3 columns-2 mx-6 mb-10">
+    <li><b>Leadership:</b> Team building, hiring, delivery planning, working with product & design</li>
+    <li><b>AI &amp; LLM:</b> Tool-calling agents, multi-agent routing, RAG, pgvector, LLM-as-judge evals, prompt engineering, OpenAI API, RubyLLM, LangChain</li>
+    <li><b>AI-assisted delivery:</b> Claude Code, Codex, Warp, herdr</li>
+    <li><b>Languages:</b> Ruby, Python, TypeScript, JavaScript</li>
+    <li><b>Backend:</b> Ruby on Rails, ActiveRecord, REST/GraphQL APIs, distributed systems, domain modeling</li>
+    <li><b>Databases:</b> PostgreSQL, Redis</li>
+    <li><b>Async:</b> Sidekiq, GoodJob, SolidQueue, RabbitMQ</li>
+    <li><b>Infra:</b> Docker, CI/CD, AWS, GCP, fly.io, Heroku, Kamal</li>
+    <li><b>Observability:</b> Datadog, Sentry, Appsignal</li>
+    <li><b>Integrations:</b> Salesforce, Stripe, PayPal</li>
+        <li><b>Frontend:</b> Hotwire, React, ViewComponent, TailwindCSS</li>
+  </ul>
+
+  <!-- EDUCATION -->
+  <div class="mb-5">
+    <h2 class="text-3xl font-bold">Education & Programs</h2>
+  </div>
+
+  <ul class="list-disc mx-6 mb-10 grid gap-2">
+    <li><b>M.Sc. Applied Mathematics and Computer Science</b>, Saint Petersburg State University, 2017–2019</li>
+    <li><b>B.Sc. Applied Mathematics and Computer Science</b>, Saint Petersburg State University, 2013–2017</li>
+    <li><b>Startup programs:</b> <a href={techstarsWeb3Url}>Techstars Web3 '25</a> (Dublin & London), XFounders Season 4 (with Starknet Foundation), Founder.University Cohort 9</li>
+  </ul>
+
+</BaseLayout>
